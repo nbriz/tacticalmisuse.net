@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Source Code Pro';
+  background: #000;
+  color: #ccc;
+  font-size: 18px;
+}
+
+section {
+  width: 100%;
+  max-width: 560px;
+  margin: 100px auto;
+}
+
+
+a {
+  color: #fff;
+}
