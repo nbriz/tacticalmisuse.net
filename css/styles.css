@@ -12,11 +12,89 @@ body {
 
 section {
   width: 100%;
-  max-width: 560px;
+  max-width: 1120px;
   margin: 100px auto;
 }
 
+p {
+  max-width: 700px;
+  padding: 15px;
+}
+
+.full-width {
+  max-width: 100%;
+}
 
 a {
   color: #fff;
+}
+
+.video-link::before {
+  content: "▸";
+  border: 1px solid #fff;
+  border-radius: 50%;
+  width: 1rem;
+  display: inline-block;
+  padding-left: 0.6rem;
+  padding-bottom: 0.2rem;
+  margin-right: 0.4rem;
+}
+
+blockquote {
+  border: 1px solid #fff;
+  padding: 1rem 1.25rem;
+  border-top: none;
+  border-right: none;
+  margin-bottom: 60px;
+}
+
+blockquote > p {
+  max-width: 100%;
+  font-style: italic;
+}
+
+cite::before {
+  content: " — "
+}
+
+pre {
+  font-size: 0.9rem;
+}
+
+.center-text, .center {
+  text-align: center;
+}
+
+.center-box, .center {
+  margin: 0 auto;
+}
+
+p.center-box {
+  margin: 20px auto;
+}
+
+.single, .double, .triple {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.single {
+  justify-content: center;
+  align-items: center;
+}
+
+.double > *:first-child {
+  margin-right: 28px;
+}
+
+@media (max-width: 1260px) {
+  .double, .triple {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .double > *:first-child {
+    margin-right: 0px;
+  }
 }
