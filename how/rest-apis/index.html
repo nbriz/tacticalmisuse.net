@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Tactical Misuse</title>
+
+      <meta name="description" content="a collection of codes, scripts + techniques for tactically misusing online platforms">
+      <meta name="author" content="Nick Briz">
+
+      <meta property="og:title" content="Tactical Misuse">
+      <meta property="og:description" content="a collection of codes, scripts + techniques for tactically misusing online platforms">
+      <meta property="og:image" content="https://tacticalmisuse.net/images/icon.png">
+      <meta property="og:url" content="https://tacticalmisuse.net">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta property="og:site_name" content="Tactical Misuse">
+      <meta name="twitter:site" content="@nbriz">
+
+      <link rel="icon" type="image/png" href="/images/icon.png">
+      <link rel="stylesheet" href="/css/fonts.css">
+      <link rel="stylesheet" href="/css/styles.css">
+    </head>
+  </head>
+  <body>
+
+    <section>
+      <h2 style="margin:0">how to tactically misuse</h2>
+      <h1 style="margin:0">REST APIs</h1>
+
+      <p class="center-box">
+        since the dawn of the Web (1.0) making connections between individual websites has been a core aspect of the platforms DNA. central to this dynamic is the Web's <code>&lt;a&gt;</code> element which is used to create links, clickable pieces of text which can point to any other resource on the Web, enabling users to quickly jump from site to site leaving an associative trail (Vannevar Bush) of connections in ur browser's history. it's even possible to create a website which is itself an assemblage of resources pulled from every corner of the Web; the HTML <code>&lt;img&gt;</code> element is used to embed images into a website/app, often these are stored on the same server as the site itself, but they can just as easily embed any image stored on any server by simply pointing to its URL, the same is true for <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code> && even <code>&lt;iframe&gt;</code> which let u embed entire websites inside of another.
+      </p>
+
+      <p class="center-box">
+        but there are limits, while u can link to any site from any site && embed media, if u wanted to pull other arbitrary data from another server (say the tweets of a particular user or weather data from the NWS, etc) this required complex work-arounds. but then, during the era of Web 2.0 && the initial rise of social media, it became common practice for developers to create REST APIs alongside any site/app containing user generated content (+/or other useful/interesting data). these APIs give other developers access to data && services stored on other servers, if u've ever seen an app (like Uber for example) have Google maps built right into it, that was possible using Google's Maps API, or if u've ever seen an app which let's u schedule ur tweets in some automated way, that was made possible using Twitter's developer API. these APIs have allowed for a much more interconnected (&& perhaps interdependent, for better/worse) Web by design. but despite their intended purpose, these REST APIs can also be <i>misused</i> towards our tactical aims. we can (&& i have) write code which let's us use YouTube's own API to post videos to their platform which undermine their copyright content-id system for example, or we can use the Google Drive API to store encrypted data on their servers, in this way preventing Google from reading + analyzing all our docs && selling the subsequent insights to their customers, allowing us to leverage their "free" cloud storage w/out paying with our privacy.
+      </p>
+
+      <p class="center-box">
+        i'm still in the process of documenting these techniques, but in the meantime u can checkout my 2018 talk <a class="video-link" href="https://www.youtube.com/watch?v=vOBw09VVTkM&t=713" target="_blank">an Artist's Guide To Tactical Mis-Use</a> at the FRANK conference in Gainsville, FL (i discuss REST APIs at the <a href="https://youtu.be/vOBw09VVTkM?t=713" target="_blank">~11:35</a> marker), +/or my 2017 talk <a class="video-link" href="https://livestream.com/internetsociety/radnets17/videos/164720163" target="_blank">Their Tools, Ur Rules: The Tactical Mis-Use of Online Platforms;</a> at the Radical Networks conference in New York City, NY (i discuss REST APIs at the ~38:48 marker).
+      </p>
+
+
+
+    </section>
+  </body>
+</html>

@@ -35,11 +35,74 @@
         </pre>
       </div>
 
-      <p class="full-width">
-        i'm still in the process of documenting these techniques, but in the meantime u can checkout the <a href="/snippets">workshop snippets page</a> +/or watch my 2018 talk <a class="video-link" href="https://www.youtube.com/watch?v=vOBw09VVTkM" target="_blank">an Artist's Guide To Tactical Mis-Use</a> at the FRNAK conference in Gainsville, FL, +/or my 2017 talk <a class="video-link" href="https://livestream.com/internetsociety/radnets17/videos/164720163" target="_blank">Their Tools, Ur Rules: The Tactical Mis-Use of Online Platforms;</a> at the Radical Networks conference in New York City, NY.
+
+      <h1>an introduction to the practice</h1>
+
+      <p  class="center-box">
+        the unfortunate truth is that the Internet we have today is being increasingly colonized by the surveillance capitalists, && the more of our online life we spend in their walled gardens, the more of our digital agency we lose... which is (admittedly) a major bummer...
       </p>
 
-      <iframe width="100%" height="450px" src="https://www.youtube.com/embed/vOBw09VVTkM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p  class="center-box">
+        ...BUT it's important to remember that the Internet is over 50 years old. big tech (Google, Facebook, etc) didn't invent the Internet, they simply built a very convenient (&& deliberately addictive) algorithmic layer on top of it. netizens had been using the Internet to share && connect with others online decades before these companies showed up. in fact, all the core functionality that apps like Instagram && Twitter provide us with are actually a part of a much older underlying platform, which all of big tech's platforms are built on; the Internet's original hypermedia platform; the people's platform: the World Wide Web.
+      </p>
+
+      <p  class="center-box">
+        unlike most other platforms in the current digital landscape (including social media platforms like Twitter, Instagram, Facebook, TikTok, etc. as well as interactive media platforms like Apple's App Store, Steam, etc), the Web is an open, permission-less && decentralized platform. there's a lot we can say about this, but for our purposes what's important to realize is that the technologies which define the Web, the languages used to create the Web (HTML, CSS && JavaScript) as well as the protocols used to transport it over the Internet (HTTP/S), aren't controlled or owned by any one entity, everyone (or anyone) can participate in defining these (by joining groups like the <a href="https://www.w3.org/" target="_blank">W3C</a>) which means that anyone can create their own version of the core application we use to access content online: the Web browser.
+      </p>
+
+      <p  class="center-box">
+        as the data barons continue their imperialist quest to colonize the Web, we're seeing an increasing number of HTTP clients (aka Web browsers) intentionally designed with limited functionality && often restricted to requesting data from a single server. this has become the norm on mobile devices, the mobile app versions of webapps like Twitter && Instagram are essentially Web browsers restricted to visiting a single site (theirs). on desktops, however, it is still the convention to use W3C standard compliant Web browser to access these social platforms, like Safari, Edge, Chrome, Opera, Firefox && a number of others. in addition to being unrestricted portals to the entire online world, these browsers also ship with built-in "developer tools" && other features like "context menus" + the ability to extend their functionality through browser "add-ons" (aka "extensions"). leveraging these features in unconventional + unintended ways is at the center of this practice i like to call "tactical misuse".
+      </p>
+
+      <div class="center">
+        <h2 class="clink">
+          <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">the browser</a>
+        </h2>
+      </div>
+
+      <p  class="center-box">
+        while all modern desktop browsers have the features we'll be misusing, the details vary from browser to browser. to keep these resources focused + simple i'm going to be sticking to 1 browser: Mozilla's Firefox. in my experience (as an internet artist, hacker && web developer) i've noticed that the default browsers which ship with most systems (Internet Explorer && later Edge on Windows, or Safari on Apple) historically have never been quite as good as those developed by 3rd party entities (who are perhaps more motivated to go the extra mile). The two most popular of these are Google's Chrome && Mozilla's Firefox. While both of these are <i>technically</i> just as effective for our purposes, the former is produced by the corporation which pioneered surveillance capitalism while the later was created by a non-profit organization working hard to push for a <a href="https://www.mozilla.org/en-US/about/manifesto/" target="_blank">healthy/equitable Internet</a>. && so for obvious reasons, i'll be demoing all of these concepts using Firefox. if u haven't already, i suggest u download Firefox before moving fwd.
+      </p>
+
+      <div class="center">
+        <h2 class="clink">
+          <a href="core-concepts">the core concept</a>
+        </h2>
+      </div>
+
+      <p  class="center-box">
+        when we use the browser we're often times focused on the content within the browser's frame, but here it's worth reminding ourselves that the "medium often contains a much more important message" (Marshall McLuhan). there are so many other creative && experimental ways of using the browser which allow us to engage with platforms in ways the data barons would prefer we didn't; ways which undermine their exploitative business practices && in the process expand our digital literacy && allows us to exercise our agency. while i'll be sharing very specific techniques && code snippets throughout this site, it's important we don't loose site of this core concept; b/c the code on this site will eventually stop working as these sites update && the specific techniques may become less effective as platforms evolve/adapt, but so long as we use browsers which adhere to the Web's open standards, the core concepts, ethic && perspectives shared throughout these materials will remain relevant.
+      </p>
+
+      <div class="center">
+        <h2 class="clink">
+          <a href="dev-tools">browser dev tools</a>
+        </h2>
+      </div>
+
+      <p  class="center-box">
+        all standard compliant desktop web browsers have built-in "developer tools". these are tools created for web developers, designed to help them debug && experiment w/how the code they've written (in HTML, CSS && JavaScript) for their websites && applications is running in any given browser. if u search for information or tutorials on how to properly <i>use</i> these dev tools, u'll learn all about how to effectively debug the code u've written. but this site is about how we can <i>misuse</i> these same tools to tactically undermine (remix, hack, jam) the code which the surveillance capitalist have written.
+      </p>
+
+      <div class="center">
+        <h2 class="clink">
+          <a href="add-ons">browser add-on</a>
+        </h2>
+      </div>
+
+      <p  class="center-box">
+        while the web console hacks described in the section on browser dev tools are effective ways to quickly undermine the mechanisms of surveillance capitalism && reclaim some agency over these platforms, these are ultimately short term individual tactics. but that same code can be recontextualized as a browser add-on which can then be automated && shared w/others. however, as we work on taking our hacks to this next level, it's worth reminding ourselves that while these are more effective + long-term solutions than the console hacks, <a href="https://howthey.watch/us/long-term-solutions.html" target="_blank">truly long-term sustainable solutions</a> will require systemic changes made by organized groups over longer periods of time. still, in the meantime, it's worth creating && sharing these tactical addons w/our fellow netizens.
+      </p>
+
+      <div class="center">
+        <h2 class="clink">
+          <a href="rest-apis">REST APIs</a>
+        </h2>
+      </div>
+
+      <p  class="center-box">
+        since the dawn of the Web (1.0) making connections between individual websites has been a core aspect of the platforms DNA. central to this dynamic is the Web's <code>&lt;a&gt;</code> element which is used to create links, clickable pieces of text which can point to any other resource on the Web, enabling users to quickly jump from site to site leaving an associative trail (Vannevar Bush) of connections in ur browser's history. it's even possible to create a website which is itself an assemblage of resources (images, videos, audio, etc) pulled from every corner of the Web. but there are limits, while u can link to any site from any site && embed media, if u wanted to pull other arbitrary data from another server (say the tweets of a particular user or weather data from the NWS, etc) this required complex work-arounds. but then, during the era of Web 2.0 && the initial rise of social media, it became common practice for developers to create REST APIs alongside any site/app containing user generated content (+/or other useful/interesting data). these APIs give other developers access to data && services stored on other servers, if u've ever seen an app which have Google maps built right into it (like Uber for example), that was possible using Google's Maps API. despite their intended purpose, these REST APIs can also be <i>misused</i> towards our tactical aims.
+      </p>
 
     </section>
   </body>
