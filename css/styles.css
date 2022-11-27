@@ -7,7 +7,14 @@ body {
   font-family: 'Source Code Pro';
   background: #000;
   color: #ccc;
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 1.3rem;
+}
+
+@media (max-width: 718px) {
+  body {
+    font-size: 1rem;
+  }
 }
 
 section {
@@ -21,12 +28,27 @@ h1 {
   font-size: 4rem;
   text-transform: uppercase;
   text-align: center;
+  text-shadow: 5px 5px 5px #000;
 }
+
+@media (max-width: 718px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
 
 h2 {
   font-weight: lighter;
   font-size: 2.5rem;
   text-align: center;
+  text-shadow: 5px 5px 5px #000;
+}
+
+@media (max-width: 718px) {
+  h2 {
+    font-size: 1.25rem;
+  }
 }
 
 /* section links ------------------------------------------------- */
@@ -138,6 +160,7 @@ h2 {
 p {
   max-width: 700px;
   padding: 15px;
+  text-shadow: 5px 5px 5px #000;
 }
 
 .full-width {
@@ -178,6 +201,13 @@ blockquote {
   margin-bottom: 60px;
 }
 
+@media (max-width: 718px) {
+  blockquote {
+    padding: 0 0;
+    margin-bottom: 0;
+  }
+}
+
 blockquote > p {
   max-width: 100%;
   font-style: italic;
@@ -189,6 +219,12 @@ cite::before {
 
 pre {
   font-size: 0.9rem;
+}
+
+@media (max-width: 644px) {
+  pre {
+    font-size: 0.6rem;
+  }
 }
 
 .center-text, .center {
@@ -234,4 +270,10 @@ p.center-box {
   font-weight: lighter;
   width: 33rem;
   margin: 0 auto;
+}
+
+@media (max-width: 718px) {
+  .table-of-contents {
+    font-size: 1.3rem;
+  }
 }
