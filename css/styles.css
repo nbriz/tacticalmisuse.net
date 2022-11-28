@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+#loader {
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
 body {
   margin: 0;
   font-family: 'Source Code Pro';
@@ -178,7 +188,7 @@ a {
   color: #fff;
 }
 
-img {
+video, img {
   width: 100%;
 }
 

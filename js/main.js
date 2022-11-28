@@ -35,16 +35,43 @@ shadows.forEach(p => {
 })
 
 // via: https://stackoverflow.com/a/22480938/1104148
-function isScrolledIntoView (el) {
+function isScrolledIntoView (el, full) {
   const rect = el.getBoundingClientRect()
   const elemTop = rect.top
   const elemBottom = rect.bottom
   // Only completely visible elements return true:
   let isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight)
-  // Partially visible elements return true:
-  isVisible = elemTop < window.innerHeight && elemBottom >= 0
+  if (!full) {
+    // Partially visible elements return true:
+    isVisible = elemTop < window.innerHeight && elemBottom >= 0
+  }
   return isVisible
 }
+
+// --------------------------------------------------- images
+
+const imgs = [
+  ...document.querySelectorAll('img'),
+  ...document.querySelectorAll('video')
+]
+
+// hide elements
+imgs.forEach(img => {
+  img.style.opacity = 0
+  img.style.transition = 'opacity 0.5s'
+  if (isScrolledIntoView(img)) {
+    setTimeout(() => { img.style.opacity = 1 }, 100)
+  }
+})
+
+// display elements
+window.addEventListener('scroll', () => {
+  imgs.forEach(img => {
+    if (img.style.opacity === '0') {
+      if (isScrolledIntoView(img, true)) { img.style.opacity = 1 }
+    }
+  })
+})
 
 // --------------------------------------------------- unicode titles
 
