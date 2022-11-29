@@ -28,8 +28,8 @@ body {
 }
 
 section {
-  width: 100%;
-  max-width: 1120px;
+  width: 1120px;
+  max-width: 100%;
   margin: 100px auto;
 }
 
@@ -168,9 +168,13 @@ h2 {
 }
 
 p {
-  max-width: 700px;
   padding: 15px;
   text-shadow: 5px 5px 5px #000;
+}
+
+.double > p {
+  max-width: 100%;
+  width: 560px;
 }
 
 .full-width {
@@ -278,7 +282,7 @@ p.center-box {
 .table-of-contents {
   font-size: 2rem;
   font-weight: lighter;
-  width: 33rem;
+  width: 30rem;
   margin: 0 auto;
 }
 
