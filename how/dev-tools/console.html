@@ -24,16 +24,65 @@
   </head>
   <body>
 
+
+
     <section>
       <h2 style="margin:0">how to tactically misuse</h2>
       <h1 style="margin:0">the "Console" tab</h1>
       <h2 style="margin:0">in the dev tools</h2>
 
       <p class="center-box">
-        ...under construction...
+        where as the Inspector tab is used to debug HTML/CSS, the Console tab in the dev tools is designed to help developers debug their JavaScript code. if/when a developer has a bug in their JS code, its common for an error message to show up in this console, detailing what sort of error occurred + in which file/line of code.
       </p>
 
+      <p class="center-box">
+         like the Inspector tab, this Console tab can also be tactically misused to undermine the exploitative algorithms of surveillance platforms in a variety of powerful ways. it's this tab more than any other that i've leveraged in a number of projects, like <a href="http://plzfollow.me/" target="_blank">plzfollow.me</a> && <a href="http://nickbriz.com/facebook/" target="_blank">How To / Why Leave Facebook</a>. to open the Console (on Firefox) use the Ctrl + Shift + i shortcut key (Cmd + Shift + i on Mac). u can also right-mouse click (or double finger click on trackpad) && choose "Inspect" to open up the dev tools to the Inspector tab, then switch over to the Console tab. it's not uncommon that the page u're inspecting has some warning or error messages displaying in the console, click on the trash-can icon on the top-left corner of the Console to clear these.
+      </p>
 
+      <p class="center-box">
+        to open the Console (on Firefox) use the Ctrl + Shift + i shortcut key. u can also right-mouse click (or double finger click on trackpad) && choose "Inspect" to open up the dev tools to the Inspector tab, then switch over to the Console tab. it's not uncommon that the page u're inspecting has some warning or error messages displaying in the console, click on the trash-can icon on the top-left corner of the Console to clear these.
+      </p>
+
+      <img style="opacity: 0" src="/images/twitter-console.png" alt="a screenshot of a browser opened to Twitter with the Console open">
+
+      <p class="center-box">
+        u can type ur own JavaScript code into this console && hit the Enter it to run it, for example if we type <code>alert('hello internet')</code> && pres Enter, u should see an pop-up alert window appear on the page w/the message in it. JavaScript is the Web's native programming language && has become one of the most popular programming languages in general. as w/HTML+CSS in the last section, a fundamental understanding of this language isn't necessary to take advantage of these hacks (nor is it in the scope of these tutorials to cover JavaScript), but u can learn more about the language on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction" target="_blank">Mozilla's Developer Docs</a> as well as from the fantastic (&& free) book <a href="https://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a> by Marijn Haverbeke.
+      </p>
+
+      <video src="/videos/google.mp4" loop autoplay controls></video>
+
+
+      <p class="center-box">
+        not only can we run arbitrary JavaScript code in this Console, but we can also interact w/any aspect of the website/app we're on, including in ways the original developers might prefer we didn't. lets run another alert, but rather than writing our own message, let's alert the page's title <code>alert(document.title)</code>. this <code>document</code> object contains much more than the current website/app's title, it includes everything u see (&& don't see) on the page && provides us w/an interface for manipulating it, for example try running the following code in the console:
+      </p>
+
+      <div id="bg-code1"></div>
+
+      <p class="center-box">
+        this will change the page's background to red. if u press the up arrow on ur keyboard u can cycle through previous code snippets u've run in the console, press up once to access that line again && try changing 'red' to some other color (making sure the color is always surrounded by quote marks, this is known as a <i>string</i> in programming), u can also try hex code values like <code>'#ff00cc'</code> as well as rgb && hsl values like <code>'rgb(234,98,11)'</code> && <code>'hsl(90deg, 100%, 50%)'</code>. u can even create more complex patterns using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients" target="_blank">CSS gradient functions</a>
+      </p>
+
+      <div id="bg-code2"></div>
+
+      <p class="center-box">
+        <b>NOTE:</b> depending on the site u're on, u might not be able to see the background color change, some sites may have elements/layers over the body's background && thus u may not notice the color change. It's also worth noting, as mentioned in the last section, that the changes we are making only effect us (not anyone else visiting the site), if we refresh the page (&& thus send a request to the server for a fresh copy of the code) our changes will disappear... still, there is a lot of power here.
+      </p>
+
+      <div id="bg-code3"></div>
+
+      <p class="center-box">
+        the code snippet above will make all the div elements on the page slowly rotate (as demoed in the video above). u can start to imagine how these sorts of hacks can lead to playful + realtime webpage remixes (lots of creative potential here), but the purpose of this site is to specifically look at how we might tactically misuse the console to subvert the manipulative intentions of big tech. to that end, i've created a separate page which includes a series of scripts:
+      </p>
+
+      <div class="center">
+        <h2 class="clink">
+          <a href="/scripts">more console scripts</a>
+        </h2>
+      </div>
+
+      <p class="center-box">
+        that page includes various different tactical snippets of code as well as accompanying info. after u've spent some time experimenting w/those u can check out the last section on misusing dev tools, the <a href="network.html">Network</a> tab, as well as the section on how we can use <a href="../addon-ons">addon-ons</a> to package some of these console hacks && share them w/others.
+      </p>
 
     </section>
 
@@ -42,5 +91,7 @@
     <script src="/js/BGGradient.js"></script>
     <script src="/js/nn.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/netitor.min.js"></script>
+    <script src="/js/console-demos.js"></script>
   </body>
 </html>

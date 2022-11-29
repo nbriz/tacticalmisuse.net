@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Tactical Misuse</title>
+
+      <meta name="description" content="a collection of codes, scripts + techniques for tactically misusing online platforms">
+      <meta name="author" content="Nick Briz">
+
+      <meta property="og:title" content="Tactical Misuse">
+      <meta property="og:description" content="a collection of codes, scripts + techniques for tactically misusing online platforms">
+      <meta property="og:image" content="https://tacticalmisuse.net/images/icon.png">
+      <meta property="og:url" content="https://tacticalmisuse.net">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta property="og:site_name" content="Tactical Misuse">
+      <meta name="twitter:site" content="@nbriz">
+
+      <link rel="icon" type="image/png" href="/images/icon.png">
+      <link rel="stylesheet" href="/css/fonts.css">
+      <link rel="stylesheet" href="/css/styles.css">
+      <style media="screen">
+        .snippet-menu {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 0;
+        }
+      </style>
+    </head>
+  </head>
+  <body>
+
+    <section>
+      <div class="single">
+        <pre data-animate="true">
+░░░░░░░  ░░░░░░ ░░░░░░   ░░  ░░░░░░  ░░░░░░░░ ░░░░░░░
+▒▒      ▒▒      ▒▒   ▒▒  ▒▒  ▒▒   ▒▒    ▒▒    ▒▒
+▒▒▒▒▒▒▒ ▒▒      ▒▒▒▒▒▒   ▒▒  ▒▒▒▒▒▒     ▒▒    ▒▒▒▒▒▒▒
+     ▓▓ ▓▓      ▓▓   ▓▓  ▓▓  ▓▓         ▓▓         ▓▓
+███████  ██████ ██   ██  ██  ██         ██    ███████
+        </pre>
+      </div>
+
+      <div class="double">
+        <p>
+          this page contains/collects various different JavaScript snippets for the purpose of tactically misusing various online surveillance platforms. refer to my notes on the browser's <a href="/how/dev-tools">dev tools</a>, specifically the <a href="/how/dev-tools/console.html">Console</a> tab if u're unfamiliar w/these. i've also got notes on how to package any of the following snippets (or variations thereof) as browser <a href="/how/addon-ons">addon-ons</a> for quicker re-use && sharing w/others.
+        </p>
+
+        <p>
+          use the drop-down menu to switch between different scripts, click the "copy+paste" button to copy the current script to ur clipboard && then use the Ctrl + v shortcut key to paste it into the Console (Cmd + v on Mac). u can also double click various parts of the code w/in any of these snippets to learn more about each piece of the code.
+        </p>
+      </div>
+
+      <div class="full-width snippet-menu">
+        <select id="snippets"><option value="pick-one">[CHOOSE ONE]<option></select>
+        <button id="copy">copy + paste</button>
+      </div>
+
+      <div id="code"></div>
+
+      <div class="double">
+        <p id="nfo">...</p>
+        <p id="edu">...</p>
+      </div>
+
+
+      <script src="/js/ascii.js"></script>
+      <script src="/js/tween.umd.js"></script>
+      <script src="/js/BGGradient.js"></script>
+      <script src="/js/nn.min.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/netitor.min.js"></script>
+      <script src="/js/console-scripts.js"></script>
+    </section>
+  </body>
+</html>
