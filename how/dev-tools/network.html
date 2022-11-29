@@ -30,7 +30,77 @@
       <h2 style="margin:0">in the dev tools</h2>
 
       <p class="center-box">
-        ...under construction...
+        let's open the developer tools again, this time we'll take a look at the "Network" tab, this is a tool that lets developers monitor all the data traveling between ur browser && the website/app's server. some of this data might be obvious (like the HTML, CSS && JavaScript files, ie. the website itself as well as any media like images or videos embedded on the site) other bits of data might be less obvious. these packets of data are called "HTTP requests", every request, as well as as metadata about that request (the size of the packet, how long it took to travel between the browser && server, etc) gets logged in the Network tab. like the other developer tools, this was designed to help programmers debug the apps they're working on, but we can also use it for our tactical investigative purposes.
+      </p>
+
+      <img style="opacity: 0" src="/images/network.png" alt="a screenshot of a browser opened to the Bing search engine with the Network inspetor open">
+
+      <p class="center-box">
+        this is how a privacy researcher noticed some time ago that Facebook was recording everything users typed into a message box or comment field even if (or especially when) they decided not to post it. a discovery which was later confirmed when Facebook published a paper on what they called "<a href="https://www.theatlantic.com/technology/archive/2013/04/71-of-facebook-users-engage-in-self-censorship/274982/" target="_blank">self-censorship</a>", if users were starting to write a comment only to decide not to post it at the last minute, Facebook wanted to know why, so they could convince users otherwise.
+      </p>
+
+      <p class="center-box">
+        entering a search on the Bing search engine, perhaps unsurprisingly, generates a whole host of web requests, some of the data here is obvious: a series of GET requests are sent for the various assets used to piece together the page itself; a POST request sends my query to the server && returns the search results. but when i first started poking around here i noticed a particular GET request for a file called "mouselog.js"
+      </p>
+
+      <video src="/videos/bing-requests.mp4" loop autoplay controls></video>
+
+      <p class="center-box">
+        then, every time i'd move the mouse, i noticed data getting POST'd back to Microsoft's servers, even though i wasn't updating my search query, or otherwise interacting w/any other aspect of the application.
+      </p>
+
+      <video src="/videos/bing-logs.mp4" loop autoplay controls></video>
+
+      <p class="center-box">
+        if we do a Bing search for this filename: "mouselog.js", it'll take us to the <a href="https://github.com/microsoft/mouselog" target="_blank">GitHub repository</a> where Microsoft has published + developed this particular JavaScript library. digging a little deeper we confirm what we may have already suspected, Microsoft is apparently recording the mouse movements of all its users... but why?
+      </p>
+
+      <p class="center-box">
+        after digging a little more, i found a <a href="https://www.wsj.com/articles/clues-to-parkinsons-disease-from-how-you-use-your-computer-1527600547" target="_blank">Wall Street Journal</a> article discussing research conducted by Microsoft Bing in collaboration w/other medical experts.
+      </p>
+
+      <p class="center-box">
+        <b>NOTE:</b> there's a link to the original study published by the researches in that WSJ article, but depending on how u're accessing the article, u may be blocked by a pay wall (refer to my notes on the dev tool's "<a href="inspetor.html">Inspector</a>" tab for how to circumvent this).
+      </p>
+
+      <p class="center-box">
+        as the WSJ headline suggests, it turns out that Microsoft Bing was able to use Machine Learning, the latest branch of AI (artificial intelligence), to create an algorithmic model which could predict whether or not a user showed early signs of onset neurological diseases like Parkinson's, which might otherwise be missed by traditional medicine.
+      </p>
+
+      <p class="center-box">
+        using the Network tab this way allows us to pear behind the scenes && catch a glimpse of some the the data these surveillance systems are recording even when it's not immediately obvious on the surface. this particular example also raises an important point about the tools being developed by the data barons. machine learning (AI) algorithms have ushered in a whole new era of predictive potential, they are capable of generating insights previously deemed unimaginable. this technology has amazing potential for improving the human condition, that is of course, if Microsoft chooses to share that information w/their users +/or their doctors. && while, to the best of my knowledge, they haven't yet decided exactly what they're going to do w/this particular insight... i fear that the business model of surveillance capitalism incentives them instead to sell this knowledge to the highest bidder.
+      </p>
+
+      <p class="center-box">
+        this is what we mean when we say, "if u're not paying for the service than u're not the customer u're the product", Bing is "free", which means we're paying w/our data, our mouse movements are just 1 of many data points they collect from us. && the information it generates on us (who may or may not have onset neurological diseases) is the product, the customer could be ur employer, ur insurance company or anyone else interested in finding out u're sick before u urself realize it.
+      </p>
+
+      <p class="center-box">
+
+      </p>
+
+      <p class="center-box">
+
+      </p>
+
+      <p class="center-box">
+
+      </p>
+
+      <p class="center-box">
+
+      </p>
+
+      <p class="center-box">
+
+      </p>
+
+      <p class="center-box">
+
+      </p>
+
+      <p class="center-box">
+
       </p>
 
 
