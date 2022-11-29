@@ -117,6 +117,7 @@ function copyLink () {
 function loadScript (name) {
   ne.code = scripts[name].code
   nfo.innerHTML = scripts[name].info
+  window.location.hash = name
 }
 
 copy.addEventListener('click', copyLink)
@@ -142,5 +143,10 @@ window.addEventListener('load', () => {
       opt.value = key
       snippets.appendChild(opt)
     }
+  }
+
+  if (window.location.hash) {
+    const name = decodeURIComponent(window.location.hash.substr(1))
+    loadScript(name)
   }
 })
