@@ -99,7 +99,7 @@ window.addEventListener('scroll', () => {
 // --------------------------------------------------- ascii copy
 
 const eles = [
-  ...document.querySelectorAll('p'),
+  ...[...document.querySelectorAll('p')].filter(p => !p.dataset.skip),
   ...document.querySelectorAll('h1'),
   ...document.querySelectorAll('h2'),
   ...document.querySelectorAll('li')
