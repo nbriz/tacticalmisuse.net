@@ -1,6 +1,6 @@
 /* global Netitor */
 const ne = new Netitor({
-  ele: '#code', language: 'javascript', readOnly: true, theme: 'monokai'
+  ele: '#code', language: 'javascript', readOnly: true, theme: 'moz-dark'
 })
 
 const snippets = document.querySelector('#snippets')

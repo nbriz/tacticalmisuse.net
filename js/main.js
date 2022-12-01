@@ -1,5 +1,5 @@
 /* global nn, BGGradient, asciiWave, uniFade */
-const bgg = new BGGradient('#222222', '#000000')
+const bgg = new BGGradient('#232327', '#000000')
 
 const y = window.innerHeight * 0.5
 const x = window.innerWidth * 0.5

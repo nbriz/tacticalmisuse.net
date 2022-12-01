@@ -2,8 +2,24 @@
   box-sizing: border-box;
 }
 
+:root {
+  --blue: #75bfff;
+  --purple: #b98eff;
+  --pink: #ff7de9;
+  --green: #86de74;
+  --white: #cfcbc4;
+  --dark-gray: #34343c;
+  --black: #232327;
+}
+
+::selection {
+  color: var(--black);
+  background: var(--pink);
+  text-shadow: none !important;
+}
+
 #loader {
-  background: #000;
+  background: var(--black);
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -15,8 +31,8 @@
 body {
   margin: 0;
   font-family: 'Source Code Pro';
-  background: #000;
-  color: #ccc;
+  background: var(--black);
+  color: var(--white);
   /* font-size: 18px; */
   font-size: 1.3rem;
 }
@@ -38,7 +54,7 @@ h1 {
   font-size: 4rem;
   text-transform: uppercase;
   text-align: center;
-  text-shadow: 5px 5px 5px #000;
+  text-shadow: 5px 5px 5px var(--black);
 }
 
 @media (max-width: 718px) {
@@ -52,7 +68,7 @@ h2 {
   font-weight: lighter;
   font-size: 2.5rem;
   text-align: center;
-  text-shadow: 5px 5px 5px #000;
+  text-shadow: 5px 5px 5px var(--black);
 }
 
 @media (max-width: 718px) {
@@ -68,7 +84,7 @@ h2 {
   position: relative;
   width: auto;
   margin-bottom: 12px;
-  color: #fff;
+  color: var(--white);
   transform: skew(0);
   transition: color .2s ease;
   z-index: 1;
@@ -78,7 +94,7 @@ h2 {
   display: inline-block;
   position: relative;
   width: auto;
-  color: #fff;
+  color: var(--pink);
   text-decoration: none;
   transition: color .2s ease;
   /* resets */
@@ -111,7 +127,7 @@ h2 {
 
   padding: 0px 2px;
 
-  background-color: #fff;
+  background-color: var(--pink);
 
   z-index: -1;
 
@@ -130,7 +146,7 @@ h2 {
   width: 2px;
   height: 95%;
 
-  background-color: #fff;
+  background-color: var(--white);
 
   animation: hdrCursorBlink 1.5s infinite linear;
   transition: right .5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -146,12 +162,12 @@ h2 {
 }
 
 .clink:hover {
-  color: #000;
+  color: var(--black);
   transform: skew(-5deg);
   cursor: pointer;
 }
 .clink:hover a {
-  color: #000;
+  color: var(--black);
 }
 .clink:hover:before {
   transform: scaleX(1);
@@ -169,7 +185,7 @@ h2 {
 
 p {
   padding: 15px;
-  text-shadow: 5px 5px 5px #000;
+  text-shadow: 5px 5px 5px var(--black);
 }
 
 .double > p {
@@ -182,14 +198,14 @@ p {
 }
 
 code {
-  background: #fff;
-  color: #000;
+  background: var(--black);
+  color: var(--blue);
   padding: 0.1rem 0.7rem;
   border-radius: 2px;
 }
 
 a {
-  color: #fff;
+  color: var(--pink);
 }
 
 video, img {
@@ -198,7 +214,7 @@ video, img {
 
 .video-link::before {
   content: "▸";
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   border-radius: 50%;
   width: 1rem;
   display: inline-block;
@@ -208,7 +224,7 @@ video, img {
 }
 
 blockquote {
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   padding: 1rem 1.25rem;
   border-top: none;
   border-right: none;
@@ -282,7 +298,8 @@ p.center-box {
 .table-of-contents {
   font-size: 2rem;
   font-weight: lighter;
-  width: 30rem;
+  width: 24rem;
+  max-width: 100%;
   margin: 0 auto;
 }
 

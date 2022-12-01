@@ -31,7 +31,7 @@ const ne1 = new Netitor({
   code: "document.body.style.background = 'red'",
   language: 'javascript',
   readOnly: true,
-  theme: 'monokai'
+  theme: 'moz-dark'
 })
 
 ne1.ele.addEventListener('click', () => copyLink(ne1))
@@ -41,7 +41,7 @@ const ne2 = new Netitor({
   code: "document.body.style.background = 'linear-gradient(135deg, #c00 50%, #000 50%)'",
   language: 'javascript',
   readOnly: true,
-  theme: 'monokai'
+  theme: 'moz-dark'
 })
 
 ne2.ele.addEventListener('click', () => copyLink(ne2))
@@ -54,7 +54,7 @@ const ne3 = new Netitor({
 })`,
   language: 'javascript',
   readOnly: true,
-  theme: 'monokai'
+  theme: 'moz-dark'
 })
 
 ne3.ele.addEventListener('click', () => copyLink(ne3))
