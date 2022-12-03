@@ -31,8 +31,71 @@
       <h1 style="margin:0">add-ons</h1>
 
       <p class="center-box">
-        ...under construction...
+        while the <a href="/how/dev-tools/console.html" target="_blank">web console hacks</a> described in the previous section on browser <a href="/how/dev-tools" target="_blank">dev tools</a> are effective ways to quickly undermine the mechanisms of surveillance capitalism && reclaim some agency over these platforms, these are ultimately short term individual tactics. but that same code can be recontextualized as a browser add-on which can then be automated && shared w/others.
       </p>
+
+      <p class="center-box">
+        in this section we'll repackage some of the hacks shared in the <a href="/scripts" target="_blank">console scripts</a> section as browser add-ons. while it's possible to create add-ons (aka "extensions") for other browsers, for the reasons i explained before, these instructions are going to be specific to Firefox (though these should also work on Chrome)
+      </p>
+
+      <p class="center-box">
+        <a href="https://journals.sagepub.com/doi/abs/10.1177/0956797616645673" target="_blank">studies</a> have shown that the number of likes/hearts/etc posts have on social media have a measurable effect on our brain. these are of course designed to maximize engagement (&amp;&amp; thus profit) for the platforms, but they may not always have the best effect on our mental health. this is why one of the scripts i shared in the previous section was a simple one-liner which removes all metrics from twitter. i mentioned that this console script was very similar to the piece <a href="https://bengrosser.com/projects/twitter-demetricator/" target="_blank">Twitter Demarcator</a> by artist Ben Grosser, except that Grosser released his project as a browser add-on. Grosser actually made a series of add-ons which would "demetricate" other platforms as well, like <a href="https://bengrosser.com/projects/facebook-demetricator/" target="_blank">Facebook</a> && <a href="https://bengrosser.com/projects/instagram-demetricator/" target="_blank">Instagram</a>.
+      </p>
+
+      <h2>creating an add-on</h2>
+
+      <p class="center-box">
+        an add-on is essentially a way of pre-installing our script into our browser so that it runs automatically when we visit a particular site, rather than having to manually paste it into the web console every time. we do this first by creating a folder, let's call our folder "<b>twitter-demetricator</b>" after Grosser's piece (it's best to avoid capital letters && spaces when creating folder names, which is why i used a dash). using a code editor (like <a href="https://www.sublimetext.com/" target="_blank">Sublime</a>, <a href="https://atom.io/" target="_blank">Atom</a> or <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>) or any simple text editor, like Text Edit on Mac or Notepad on Windows (so long as u ensure u're writing in "plain text" mode rather than in some formatted text mode), copy+paste the snippet below && save it as a file in ur folder called "<b>demetricate.js</b>"
+      </p>
+
+      <div id="bg-code1"></div>
+
+      <p class="center-box">
+        this code is almost identical to the <a href="/scripts/#Twitter%20demetricator" target="_blank">twitter demetricator</a> script from the console hacking section, except that it's wrapped w/in a window "scroll" event. this will ensure that our script re-runs every time we scroll the page, this way any new tweets appearing in our feed also get their metrics removed.
+      </p>
+
+      <p class="center-box">
+        next we'll create another text file in that same folder called "<b>manifest.json</b>". this file is our add-on's "meta data", it's not the script itself, but rather, information about our script. this includes our add-on's name, a description of what it does as well as which scripts it's going to run && on which pages.
+      </p>
+
+      <div id="bg-code2"></div>
+
+      <p class="center-box">
+        here we're specifying that our add-on should run the "<b>demetricate.js</b>" script we created only when we visit twitter.com in our browser, meaning it won't run in any other tabs looking at other websites/apps. this manifest file also contains a reference to an icon, i'm using this <a href="twitter-demetricator/icon.png" target="_blank">icon.png</a> (which u're welcome to right-click > save as into ur folder as well).
+      </p>
+
+      <h2>installing our add-on</h2>
+
+      <p class="center-box">
+        once we've got these three files (our script, our manifest && our icon) saved in our folder we can install our add-on by opening up a new tab in our browser && going to <code>about:debugging</code>. this will take us to a Firefox settings page, there u should see an option in the left menu called "This Firefox", click on that. This will take u to ur extensions (ie. add-ons) page which should include a button to "Load Temporary Add-on...", click on that && then navigate to ur "<b>twitter-demetricator</b>" folder. Once there select the manifest file. u should now see ur add-on loaded w/in ur liest of "Temporary Extensions"
+      </p>
+
+      <video src="/videos/installing-addon.mp4" autoplay loop controls></video>
+
+      <p class="center-box">
+        to test that the add-on is working, open a new tab to twitter.com && start scrolling, u should notice that all the metrics (the number of likes, retweets && comments) have been removed. u could follow these same steps to package up any of the code examples (&& any combination or variation there of) in the <a href="/scripts" target="_blank">console scripts</a> section as a browser add-on. u can also share ur add-on w/others so they can install it in their browsers as well.
+      </p>
+
+      <h2>...</h2>
+
+      <p class="center-box">
+        there's loads more u can do with browser add-ons, including adding buttons to the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Browser_action" target="_blank">browser toolbar</a>, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Context_menu_items" target="_blank">context menus</a> && even the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/devtools_panels" target="_blank">dev tools</a> themselves. u can learn all about add-ons on Mozilla's <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/What_are_WebExtensions" target="_blank">add-on tutorials</a>, including how to submit ur add-on to an online platform so that others could more easily discover + install it.
+      </p>
+
+      <p class="center-box">
+        Grosser's add-on is a bit more complex than ours, accounting for other details + metrics. he's also made separate versions for Chrome + Firefox && has published his add-on w/both platforms. if u're curious to see what his code looks like, he's made it available open-source on his <a href="https://github.com/bengrosser/twitter-demetricator" target="_blank">GitHub</a>.
+      </p>
+
+      <p class="center-box">
+        although removing these metrics from twitter is a small + simple change, it's important to remember that these small changes can have large impacts. furthermore, creating add-ons like these aren't limited to small changes, we can essentially change anything we see on the page, not only removing but adding content as well.
+      </p>
+
+      <img style="opacity: 0"  src="/images/mood-manipulator.png" alt="a screenshot of Lauren McCarthy's Facebook Mood Manipulator add-on">
+
+      <p class="center-box">
+        in her piece <a href="https://lauren-mccarthy.com/Facebook-Mood-Manipulator" target="_blank">Facebook Mood Manipulator</a>, artist Lauren McCarthy uses this capability to create an add-on which adds an interface (a series of sliders) that allows Facebook users to adjust the emotional sentiment of their news feed. this was produced in response to a study Facebook conducted where they algorithmically adjusted the feeds of hundreds of thousands of users to determine if they could <a href="https://www.theguardian.com/technology/2014/jun/30/facebook-emotion-study-breached-ethical-guidelines-researchers-say" target="_blank">manipulate our emotions</a> by adjusting the emotional sentiment of our news feed (filter out "happy" posts && including only the "depressing" posts for example), it turns out they can. McCarthy's piece places those filters directly w/in Facebook's interface, giving the control back to the user.
+      </p>
+
 
     </section>
 
@@ -48,5 +111,7 @@
     <script src="/js/BGGradient.js"></script>
     <script src="/js/nn.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/netitor.min.js"></script>
+    <script src="/js/addon-demos.js"></script>
   </body>
 </html>

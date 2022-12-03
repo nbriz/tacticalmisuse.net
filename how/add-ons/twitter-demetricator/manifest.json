@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "demetricate",
+  "version": "1.0",
+  "description": "removes metrics from a twitter feed",
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitter.com/*"],
+      "js": ["demetricate.js"]
+    }
+  ]
+}
