@@ -35,15 +35,66 @@
       </p>
 
       <p class="center-box">
-        but there are limits, while the Web lets u can link to any site from any site && embed media, if u wanted to pull other arbitrary data from another server (say the tweets of a particular user or weather data from the NWS, etc) this required complex work-arounds. but then, during the era of Web 2.0 && the initial rise of social media, it became common practice for developers to create REST APIs alongside any site/app containing user generated content (+/or other useful/interesting data). these APIs give other developers access to data && services stored on servers which they otherwise wouldn't have access to. for exapmle, if u've ever seen an app with Google maps integrated right into it (like Uber), that was possible using Google's Maps's developer API, or if u've ever seen an app which let's u schedule ur tweets in some automated way, that was made possible using Twitter's developer API. these APIs have allowed for a much more interconnected (&& perhaps interdependent, for better/worse) Web by design.
+        but there are limits, while the Web lets u link to any site from any other site && embed media, if u wanted to pull other arbitrary data from another server (say the tweets of a particular user or weather data from the NWS, etc) this used to require complex work-arounds. but then, during the era of Web 2.0 && the initial rise of social media, it became common practice for developers to create REST APIs alongside any site/app containing user generated content (+/or other useful/interesting data).
+      </p>
+
+      <iframe width="100%" height="450px" src="https://www.youtube.com/embed/vOBw09VVTkM?start=713" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p class="center-box caption">
+        clip from my 2018 talk <a class="video-link" href="https://www.youtube.com/watch?v=vOBw09VVTkM&t=713" target="_blank">an Artist's Guide To Tactical Mis-Use</a> at the FRANK conference in Gainsville, FL, where i discuss REST APIs at the <a href="https://youtu.be/vOBw09VVTkM?t=713" target="_blank">~11:35</a> linked above.
+      </p>
+
+
+      <p class="center-box">
+        as explained in the video above these APIs give other developers access to data && services stored on servers which they otherwise wouldn't have access to. for exapmle, if u've ever seen an app w/Google maps integrated right into it (like Uber), that was possible using Google's Maps's developer API, or if u've ever seen an app which let's u schedule ur tweets in some automated way, that was made possible using Twitter's developer API. these APIs have allowed for a much more interconnected (&& perhaps interdependent, for better/worse) Web by design.
       </p>
 
       <p class="center-box">
-        but despite their intended purpose, these REST APIs can also be <i>misused</i> towards our tactical aims. we can (&& i have) write code which let's us use YouTube's own API to post videos to their platform which undermine their copyright content-id system for example, or we can use the Google Drive API to store encrypted data on their servers, in this way preventing Google from reading + analyzing all our docs && selling the subsequent insights to their customers, allowing us to leverage their "free" cloud storage w/out paying w/our privacy.
+        despite their intended purpose, these REST APIs can also be <i>misused</i> towards our tactical aims. of all the hacks described in this resource, these are the most advanced (which is why i left them for the end). a step-by-step tutorial on exactly how to misuse these APIs would require detailed instructions for each platform's APIs (as they are all different), it's also necessary to have a background in web development + a solid understanding of JavaScript. && so a detailed technical tutorial is beyond the scope of this website.
       </p>
 
       <p class="center-box">
-        i'm still in the process of documenting these techniques, but in the meantime u can checkout my 2018 talk <a class="video-link" href="https://www.youtube.com/watch?v=vOBw09VVTkM&t=713" target="_blank">an Artist's Guide To Tactical Mis-Use</a> at the FRANK conference in Gainsville, FL (i discuss REST APIs at the <a href="https://youtu.be/vOBw09VVTkM?t=713" target="_blank">~11:35</a> marker), +/or my 2017 talk <a class="video-link" href="https://livestream.com/internetsociety/radnets17/videos/164720163" target="_blank">Their Tools, Ur Rules: The Tactical Mis-Use of Online Platforms;</a> at the Radical Networks conference in New York City, NY (i discuss REST APIs at the ~38:48 marker).
+        that said, even if u're not well versed in JavaScript, i think these are worth discussing b/c conceptually they serve as powerful examples of how we can use the platform's own tools (their APIs) to undermine their exploitative + manipulative algorithms. so here i'll share a few projects + experiments i've made which do just that, starting w/YouTube.
+      </p>
+
+      <p class="center-box">
+        YouTube has a complicated history w/copyright. like many video hosting sites, it was originally used by netizens to upload "original" content as well as copyrighted content; while the Web has always been a bastion for pirated content, YouTube eventually deployed an algorithm called <a href="https://support.google.com/youtube/answer/2797370?hl=en" target="_blank">Content ID</a>. i'm not a fan of this algorithm, in large part b/c i'm opposed to the entire notion of intellectual property (if u're curious to understand why i'm anti-copyright u can read more on my theory of <a href="https://web.archive.org/web/20160117004229/http://nickbriz.com/files/PiraticalPracticesTheory.pdf" target="_blank">piratical practices</a> [2013] as well as watch my video on <a href=https://www.youtube.com/watch?v=KOhfMvBXAec" target="_blank"> YouTube Content ID: what copyright gets wrong</a>). && so, to get around YouTube's Content ID, i created a web app which uses YouTube's own APIs to upload + host + playback copyrighted content w/out getting flagged by their algorithm.
+      </p>
+
+      <video src="/videos/scrambled-tubez.mp4" controls></video>
+      <p class="center-box caption">
+        clip from my 2017 talk <a class="video-link" href="https://livestream.com/internetsociety/radnets17/videos/164720163" target="_blank">Their Tools, Ur Rules: The Tactical Mis-Use of Online Platforms;</a> at the Radical Networks conference in New York City, NY where i also discuss how to tactically misuse REST APIs (at the ~38:48 marker)
+      </p>
+
+      <p class="center-box">
+        most content platforms today provide some sort of a "feed". these feeds were once chronological (u would see posts made by accounts u follow from the most recent to the oldest), but eventually the platforms realized that by algorithmically curating our feeds they could manipulate our behavior in different ways (see also my example on how to use the dev-console to <a href="http://localhost:8000/scripts/#chronological%20Instagram%20feed" target="_blank">convert algorithmic feeds into chronological ones</a>). typically, the goal is to keep us scrolling on the platform as long as possible (the longer we scroll the more they can sell our attention to others + the more data they generate to fuel other revenue streams). beyond capturing our attention, these algorithms can have many unintended side effects, in YouTube's case it was found to have been <a href="https://www.theguardian.com/technology/2018/feb/02/how-youtubes-algorithm-distorts-truth" target="_blank">radicalizing individuals</a> (though it seems, after lots of bad press, they may have recently <a href="https://themarkup.org/newsletter/hello-world/investigating-youtubes-ideological-rabbit-hole" target="_blank">corrected for this</a>). this was one (of the many) reasons i decided to experiment w/YouTube's API to see if i could produce my own feed based purely on the most recent uploaded videos (rather than algorithmically catered to capture my attention), this led to a collaborative project called <a href="http://nickbriz.work/?portfolio=current.tube" target="_blank">current.tube</a> demonstrated in the video below.
+      </p>
+
+      <video src="/videos/current-tube.mp4" controls></video>
+
+      <p class="center-box">
+        throughout these resources i've shared examples of how to leverage the Web to tactically misuse the online platforms that seek to manipulate + exploit us to make a profit, including Instagram, Facebook (now "Meta"), Amazon, YouTube, Twitter && others. i want to share one last hack targeted at the pioneers of surveillance capitalism itself: Google. i imagine (though it's impossible to know for sure) that there is no single company that knows more about <i>u</i> than Google, perhaps even more than u know about urself (in certain ways). this is of course b/c they record everything: they know where u go online (espcially if u use Chrome) && where u go in the physical world (especially if u use Android +/or Google Maps), they not only know where u've been, they can predict where u're going && even what u're thinking (let's not forget they also record ur thoughts: what u search for, what u write in ur docs, what u write in ur emails... even if u decided not to send the email).
+      </p>
+
+      <p class="center-box">
+        we give Google our this data in exchange for "free" services, but what if we could use these services w/out having to give them our data? this is what i set out to do in my experiment "gCrypt", a web app i made which creates simple text files && uses the Google Docs API to store them in the cloud for free, except it encrypts all the data before sending it to Google so that they can't be algorithmically analyzed. this is a similar approach to a project called <a href="https://mailvelope.com/en/" target="_blank">mailvelope</a>, a browser addon which encrypts ur emails before sending them via Gmail, again providing u w/privacy while also using Goolge's "free" service. i demo both of these projects in the video below.
+      </p>
+
+      <video src="/videos/g-crypt.mp4" controls></video>
+
+      <h2>...</h2>
+
+
+      <p class="center-box">
+        while there's something v satisfying about using the surveillance platform's own tools to undermine their exploitative business practices it's important to remember, as i noted in the <a href="/why" target="_blank">preface</a>, that in the long run "the master's tools will never dismantle the master's house" (Audre Lorde). while all the techniques discussed throughout this website are great ways to <i>temporary</i> reclaim some agency/power on these platforms, the reality is we're still playing in their garden, the structures they've created. even if we're playing by our own rules, they can (&& often do) make changes to the platform which nullify our hacks. for example, current.tube is no longer functional, after about a year of exploiting bug i found in their platform, YouTube eventually "fixed" their API && "broke" my work.
+      </p>
+
+      <p class="center-box">
+        while the specific techniques shared on this site can all be rendered infective w/a simple platform <i>update</i>, my hope is that the <i>practice</i> of tactical misuse might generally serve to better our understanding of these platforms && give us a unique perspective on the business logic/dynamics driving our online world today, so that we might imagine + work towards <a href="https://howthey.watch/us/" target="_blank">a better online world for the future</a>.
+      </p>
+
+      <video src="/videos/eof.mp4" controls></video>
+      <p class="center-box caption">
+        closing clip from my 2017 talk <a class="video-link" href="https://livestream.com/internetsociety/radnets17/videos/164720163" target="_blank">Their Tools, Ur Rules: The Tactical Mis-Use of Online Platforms;</a> at the Radical Networks conference in New York City, NY
       </p>
 
 

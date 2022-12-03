@@ -94,7 +94,7 @@ h2 {
   display: inline-block;
   position: relative;
   width: auto;
-  color: var(--pink);
+  color: var(--white);
   text-decoration: none;
   transition: color .2s ease;
   /* resets */
@@ -223,12 +223,23 @@ video, img {
   margin-right: 0.4rem;
 }
 
+.caption {
+  color: var(--green);
+  font-size: 1rem;
+  font-style: italic;
+  padding: 1px 40px 30px 40px;
+}
+
 blockquote {
   border: 1px solid var(--white);
   padding: 1rem 1.25rem;
   border-top: none;
   border-right: none;
   margin-bottom: 60px;
+}
+
+blockquote a {
+  color: var(--white);
 }
 
 @media (max-width: 718px) {
