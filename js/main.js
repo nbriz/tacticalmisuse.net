@@ -4,10 +4,11 @@ const bgg = new BGGradient('#232327', '#000000')
 const y = window.innerHeight * 0.5
 const x = window.innerWidth * 0.5
 bgg.draw(x, y)
-
-if (!nn.isMobile()) {
-  window.addEventListener('mousemove', e => bgg.draw(e.clientX, e.clientY))
-}
+window.addEventListener('resize', () => {
+  const y = window.innerHeight * 0.5
+  const x = window.innerWidth * 0.5
+  bgg.draw(x, y)
+})
 
 function updateShadow (e, ele) {
   const size = 10
@@ -24,15 +25,19 @@ function updateShadow (e, ele) {
   ele.style.textShadow = `${x}px ${y}px 5px #000`
 }
 
-const shadows = [
-  ...document.querySelectorAll('p'),
-  ...document.querySelectorAll('h1'),
-  ...document.querySelectorAll('h2')
-]
+if (!nn.isMobile()) {
+  window.addEventListener('mousemove', e => bgg.draw(e.clientX, e.clientY))
 
-shadows.forEach(p => {
-  window.addEventListener('mousemove', e => updateShadow(e, p))
-})
+  const shadows = [
+    ...document.querySelectorAll('p'),
+    ...document.querySelectorAll('h1'),
+    ...document.querySelectorAll('h2')
+  ]
+
+  shadows.forEach(p => {
+    window.addEventListener('mousemove', e => updateShadow(e, p))
+  })
+}
 
 // via: https://stackoverflow.com/a/22480938/1104148
 function isScrolledIntoView (el, full) {
