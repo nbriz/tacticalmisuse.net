@@ -197,6 +197,18 @@ p {
   max-width: 100%;
 }
 
+.full-width > p {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 1260px) {
+  .full-width > p {
+    width: 100%;
+    max-width: 560px;
+  }
+}
+
 code {
   background: var(--black);
   color: var(--blue);
