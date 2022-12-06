@@ -20,7 +20,7 @@ const scripts = {
 })`
   },
   'Twitter demetricator': {
-    info: 'this script will remove all the social metrics from tweets in your twitter feed, similar to the piece <a href="https://bengrosser.com/projects/twitter-demetricator/" target="_blank">Twitter Demarcator</a> by artist Ben Grosser. <a href="https://journals.sagepub.com/doi/abs/10.1177/0956797616645673" target="_blank">studies</a> have shown that the number of likes/hearts/etc posts have on social media have a measurable effect on our brain. these are of course designed to maximize engagement (&& thus profit) for the platforms, but they may not always have the best effect on our mental health.',
+    info: 'this script will remove all the social metrics from tweets in your twitter feed, similar to the piece <a href="https://bengrosser.com/projects/twitter-demetricator/" target="_blank">Twitter Demetricator</a> by artist Ben Grosser. <a href="https://journals.sagepub.com/doi/abs/10.1177/0956797616645673" target="_blank">studies</a> have shown that the number of likes/hearts/etc posts have on social media have a measurable effect on our brain. these are of course designed to maximize engagement (&& thus profit) for the platforms, but they may not always have the best effect on our mental health.',
     code: `document.querySelectorAll('.r-1k6nrdp').forEach(num => num.style.display = 'none')`
   },
   'infinite scroll': {
