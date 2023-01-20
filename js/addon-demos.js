@@ -61,3 +61,7 @@ const ne2 = new Netitor({
 })
 
 ne2.ele.addEventListener('click', () => copyLink(ne2))
+
+document.querySelector('.editor-button > button').addEventListener('click', () => {
+  window.open('/editor', '_blank')
+})
