@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tactical Misuse</title>
+
+    <meta name="description" content="a collection of codes, scripts + techniques for tactically misusing online platforms">
+    <meta name="author" content="Nick Briz">
+
+    <meta property="og:title" content="Tactical Misuse">
+    <meta property="og:description" content="a collection of codes, scripts + techniques for tactically misusing online platforms">
+    <meta property="og:image" content="https://tacticalmisuse.net/images/icon.png">
+    <meta property="og:url" content="https://tacticalmisuse.net">
+    <meta property="og:site_name" content="Tactical Misuse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:src" content="https://tacticalmisuse.net/images/icon.png"/>
+    <meta name="twitter:site" content="@nbriz">
+
+    <link rel="icon" type="image/png" href="/images/icon.png">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style media="screen">
+      section {
+        margin: 0;
+      }
+      .double {
+        width: 100vw;
+        justify-content: flex-start;
+      }
+
+      .top-left {
+        padding: 15px;
+        margin: 20px;
+      }
+      .top-right {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 20px;
+      }
+
+      #code {
+        display: flex;
+        justify-content: space-between;
+      }
+      #code > * { width: 50vw; }
+
+      #editor {
+        border-left: 3px solid var(--netizen-hint-color);
+        border-top: none;
+      }
+
+      #info {
+        max-width: 1180px;
+      }
+
+      #console {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 40vw;
+        min-width: 300px;
+        margin: 0;
+        z-index: 10;
+      }
+
+      .error {
+        background: rgba(94, 27, 27, 0.5);
+      }
+
+      .edu {
+        background: rgba(27, 94, 41, 0.5);
+      }
+
+      button, select {
+        border: 1px solid var(--white);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        background: var(--black);
+        margin: 0.5rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 1000px) {
+        #code {
+          flex-direction: column;
+        }
+        #code > * { width: 100vw; }
+        #manifest { margin-top: 10px; }
+        #editor {
+          border-top: 3px solid var(--netizen-hint-color);
+          border-left: none;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <section>
+
+      <div class="double">
+
+        <div class="top-left">
+<pre id="header">
+░█▀▀█ █▀▀▄ █▀▀▄ ░░█▀▀█ █▀▀▄░░░░░█▀▀▀ █▀▀▄ ░▀░ ▀▀█▀▀ █▀▀█ █▀▀█░
+░█▄▄█ █░░█ █░░█ ▀▀█░░█ █░░█ ░░░░█▀▀▀ █░░█ ▀█▀ ░░█░░ █░░█ █▄▄▀░
+░█░░█ ▀▀▀░ ▀▀▀░ ░░▀▀▀▀ ▀░░▀ ░░░░█▄▄▄ ▀▀▀░ ▀▀▀ ░░▀░░ ▀▀▀▀ ▀░▀▀░
+</pre>
+          <nav>
+            <button id="example">example scripts</button>
+            <button id="download">download addon</button>
+            <button id="install">how to install</button>
+          </nav>
+        </div>
+        <div class="top-right">
+          <p id="info">
+            this editor lets you create simple Firefox add-ons (aka web extensions) by editing two files the <code>manifest.json</code> (ur add-on's metadata) && <code>main.js</code>. visit <a href="https://extensionworkshop.com/" target="_blank">https://extensionworkshop.com</a> to learn more about add-ons.
+          </p>
+          <p id="console"></p>
+        </div>
+      </div>
+
+      <section id="code">
+        <div id="manifest"></div>
+        <div id="editor"></div>
+      </section>
+
+    </section>
+
+    <script src="/js/ascii.js"></script>
+    <script src="/js/tween.umd.js"></script>
+    <script src="/js/BGGradient.js"></script>
+    <script src="/js/nn.min.js"></script>
+    <script src="/js/netitor.min.js"></script>
+    <script src="/js/jszip.min.js"></script>
+    <script src="/js/FileSaver.min.js"></script>
+    <script src="/js/addon-editor.js"></script>
+  </body>
+</html>
