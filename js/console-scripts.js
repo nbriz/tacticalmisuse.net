@@ -14,14 +14,14 @@ const scripts = {
     code: ''
   },
   'remove reTweets': {
-    info: `this snippet removes all the retweet buttons from a twitter feed. <a href="https://www.science.org/doi/10.1126/science.aap9559" target="_blank">studies</a> have shown that Twitter's retweet button heavily contributes to the spread of disinformation online, many have <a href="https://www.theatlantic.com/technology/archive/2018/10/twitter-should-kill-retweet/574321/" target="_blank">suggested removing it</a>, but so long as it triggers engagement, we're unlikely to see the platform make this change, despite the harm it's doing to our society.`,
+    info: 'this snippet removes all the retweet buttons from a twitter feed. <a href="https://www.science.org/doi/10.1126/science.aap9559" target="_blank">studies</a> have shown that Twitter\'s retweet button heavily contributes to the spread of disinformation online, many have <a href="https://www.theatlantic.com/technology/archive/2018/10/twitter-should-kill-retweet/574321/" target="_blank">suggested removing it</a>, but so long as it triggers engagement, we\'re unlikely to see the platform make this change, despite the harm it\'s doing to our society.',
     code: `document.querySelectorAll('.css-1dbjc4n.r-1ta3fxp.r-18u37iz.r-1wtj0ep.r-1s2bzr4.r-1mdbhws').forEach(metrics => {
   metrics.children[1].style.display = 'none'
 })`
   },
   'Twitter demetricator': {
     info: 'this script will remove all the social metrics from tweets in your twitter feed, similar to the piece <a href="https://bengrosser.com/projects/twitter-demetricator/" target="_blank">Twitter Demetricator</a> by artist Ben Grosser. <a href="https://journals.sagepub.com/doi/abs/10.1177/0956797616645673" target="_blank">studies</a> have shown that the number of likes/hearts/etc posts have on social media have a measurable effect on our brain. these are of course designed to maximize engagement (&& thus profit) for the platforms, but they may not always have the best effect on our mental health.',
-    code: `document.querySelectorAll('.r-1k6nrdp').forEach(num => num.style.display = 'none')`
+    code: 'document.querySelectorAll(\'.r-1k6nrdp\').forEach(num => num.style.display = \'none\')'
   },
   'infinite scroll': {
     info: 'many of these scripts are meant to be applied to social feeds, but these feeds generally appear/build up as u scroll. this means posts which appear from scrolling past the last post to have been manipulated by any given code snippet will not be effected. this snippet of code can be used to automatically scroll through a page. u can stop the auto-scrolling by running <code>clearTimeout(scrolltimer)</code>',
@@ -84,6 +84,23 @@ const amazon = [...results].filter(r => {
   return amazon
 })
 for (let i = 0; i < amazon.length; i++) amazon[i].remove()`
+  },
+  'spin elements': {
+    info: 'we can also write all sorts of playful scripts for <a href="https://en.wikipedia.org/wiki/D%C3%A9tournement" target="_blank">détournement</a> hacks, this code will make all the "div" elements on the page spin',
+    code: `document.querySelectorAll('div').forEach(div => {
+  div.style.transition = '300s all linear'
+  div.style.transform = 'rotate(1000deg)'
+})`
+  },
+  'color clicker': {
+    info: 'we can also write all sorts of playful scripts for <a href="https://en.wikipedia.org/wiki/D%C3%A9tournement" target="_blank">détournement</a> hacks, this code will change the color of every element you click on (while also preventing the default click behavior)',
+    code: `window.addEventListener('click', (e) => {
+  e.preventDefault()
+  const r = Math.random() * 255
+  const g = Math.random() * 255
+  const b = Math.random() * 255
+  e.target.style.backgroundColor = \`rgb(\${r}, \${g}, \${b})\`
+}, true)`
   }
 }
 
