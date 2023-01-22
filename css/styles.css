@@ -187,6 +187,13 @@ h2 {
   justify-content: center;
 }
 
+.callout {
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+  padding: 40px;
+  margin: 40px 0px !important;
+}
+
 p {
   padding: 15px;
   text-shadow: 5px 5px 5px var(--black);
