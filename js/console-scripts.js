@@ -15,8 +15,8 @@ const scripts = {
   },
   'remove reTweets': {
     info: 'this snippet removes all the retweet buttons from a twitter feed. <a href="https://www.science.org/doi/10.1126/science.aap9559" target="_blank">studies</a> have shown that Twitter\'s retweet button heavily contributes to the spread of disinformation online, many have <a href="https://www.theatlantic.com/technology/archive/2018/10/twitter-should-kill-retweet/574321/" target="_blank">suggested removing it</a>, but so long as it triggers engagement, we\'re unlikely to see the platform make this change, despite the harm it\'s doing to our society.',
-    code: `document.querySelectorAll('.css-1dbjc4n.r-1ta3fxp.r-18u37iz.r-1wtj0ep.r-1s2bzr4.r-1mdbhws').forEach(metrics => {
-  metrics.children[1].style.display = 'none'
+    code: `document.querySelectorAll('.css-901oao.css-16my406.r-poiln3.r-n6v787.r-1cwl3u0.r-1k6nrdp.r-1e081e0.r-qvutc0').forEach(metrics => {
+ metrics.style.display = 'none'
 })`
   },
   'Twitter demetricator': {
