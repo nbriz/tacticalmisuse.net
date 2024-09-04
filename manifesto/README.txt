@@ -72,6 +72,9 @@ _____       _____  \ \ / /____  \ \\ \ / /____\ _____  \____\        _____\____\
     \____\/         \//      \/  \/ \// \____\/       \____\/\____\/     \____\
 
 
+
+DOWNLOAD: https://tacticalmisuse.net/manifesto/tactical-misuse-manifesto.zip
+
 INSTRUCTIONS:
 
         on Firefox: visit ->       about:debugging
