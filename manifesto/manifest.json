@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Tactical Misuse Manifesto",
+  "version": "1.0",
+  "description": "in progress",
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["manifesto.js"]
+    },
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["manifesto.js"]
+    },
+    {
+      "matches": ["*://*.facebook.com/*"],
+      "js": ["manifesto.js"]
+    },
+    {
+      "matches": ["*://*.instagram.com/*"],
+      "js": ["manifesto.js"]
+    },
+    {
+      "matches": ["*://*.bing.com/*"],
+      "js": ["manifesto.js"]
+    },
+    {
+      "matches": ["*://*.twitter.com/*"],
+      "js": ["manifesto.js"]
+    },
+    {
+      "matches": ["*://*.x.com/*"],
+      "js": ["manifesto.js"]
+    },
+    {
+      "matches": ["*://*.quora.com/*"],
+      "js": ["manifesto.js"]
+    }
+  ]
+}
