@@ -15,8 +15,8 @@ const scripts = {
   },
   'remove reTweets': {
     info: 'this snippet removes all the retweet buttons from a twitter feed. <a href="https://www.science.org/doi/10.1126/science.aap9559" target="_blank">studies</a> have shown that Twitter\'s retweet button heavily contributes to the spread of disinformation online, many have <a href="https://www.theatlantic.com/technology/archive/2018/10/twitter-should-kill-retweet/574321/" target="_blank">suggested removing it</a>, but so long as it triggers engagement, we\'re unlikely to see the platform make this change, despite the harm it\'s doing to our society.',
-    code: `document.querySelectorAll('.css-1dbjc4n.r-1ta3fxp.r-18u37iz.r-1wtj0ep.r-1s2bzr4.r-1mdbhws').forEach(metrics => {
-  metrics.children[1].style.display = 'none'
+    code: `document.querySelectorAll('.css-175oi2r.r-1kbdv8c.r-18u37iz.r-1wtj0ep.r-1ye8kvj.r-1s2bzr4').forEach(metrics => {
+    metrics.children[1].style.display = 'none'
 })`
   },
   'Twitter demetricator': {
@@ -32,16 +32,22 @@ const scripts = {
   },
   'remove Instagram ads': {
     info: 'this snippet removes all "sponsored" posts from your Instagram feed. a simple gesture, yet a consequential one, hyper-targeting us w/ads is at the center of Instagram\'s business model.',
-    code: `const feed = document.querySelector('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abc0._abcm > div > div')
-const noAds = [...feed.children].filter(a => !a.querySelector('.x5n08af.x1pg5gke.x132q4wb'))
-feed.innerHTML = ''
-noAds.forEach(post => feed.appendChild(post))`
+    code: `document.querySelectorAll('.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1uhb9sk.x1plvlek.xryxfnj.x1c4vz4f.x2lah0s.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1 article').forEach(a => {
+    if (a.querySelector('.x1fhwpqd.x132q4wb.x5n08af')) a.remove()
+})`
+  },
+  'remove Instagram "suggestions"': {
+    info: 'this snippet removes all "Suggested for you" posts from your Instagram feed. a simple gesture, yet a consequential one. "suggestions" on sites like Instagram && YouTube are designed to keep u hooked + scrolling. what\'s worse is that these algorithms have been <a href="https://dl.acm.org/doi/abs/10.1145/3351095.3372879?download=true" target="_blank">studied</a> to have all sorts of unintended <a href="https://www.theguardian.com/technology/2018/feb/02/how-youtubes-algorithm-distorts-truth" target="_blank">side effects</a> beyond just hijacking our attention.',
+    code: `document.querySelectorAll('.x1lliihq.x1plvlek.xryxfnj.x1n2onr6.x193iq5w.xeuugli.x1fj9vlw.x13faqbe.x1vvkbs.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x1i0vuye.xvs91rp.xo1l8bm.x5n08af.x1tu3fi.x3x7a5m.x10wh9bi.x1wdrske.x8viiok.x18hxmgj').forEach(a => {
+    a.parentElement.parentElement.parentElement.remove()
+})`
   },
   'chronological Instagram feed': {
-    info: 'this script removes all ads from ur Instagram feed && re-orders the remaining posts chronologically. in the earliest days of social media our feeds were chronological. later, the data barons realized that they could maximize engagement && even influence our behavior by curating our feeds in particular ways. in addition to making them richer by making us even more hooked, Meta (aka Facebook, Instagram, etc) discovered in 2014 that they could even <a href="https://www.theguardian.com/technology/2014/jun/30/facebook-emotion-study-breached-ethical-guidelines-researchers-say" target="_blank">manipulate our emotions</a>.',
-    code: `const feed = document.querySelector('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abc0._abcm > div > div')
+    info: 'this script removes all ads as well as suggested posts from ur Instagram feed && re-orders the remaining posts chronologically. in the earliest days of social media our feeds were chronological. later, the data barons realized that they could maximize engagement && even influence our behavior by curating our feeds in particular ways. in addition to making them richer by making us even more hooked, Meta (aka Facebook, Instagram, etc) discovered in 2014 that they could even <a href="https://www.theguardian.com/technology/2014/jun/30/facebook-emotion-study-breached-ethical-guidelines-researchers-say" target="_blank">manipulate our emotions</a>.',
+    code: `const feed = document.querySelector('.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1uhb9sk.x1plvlek.xryxfnj.x1c4vz4f.x2lah0s.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1 > div > div')
 const chronological = [...feed.children]
-  .filter(a => !a.querySelector('.x5n08af.x1pg5gke.x132q4wb'))
+  .filter(a => !a.querySelector('.x1fhwpqd.x132q4wb.x5n08af'))
+  .filter(a => !a.querySelector('.x1lliihq.x1plvlek.xryxfnj.x1n2onr6.x193iq5w.xeuugli.x1fj9vlw.x13faqbe.x1vvkbs.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x1i0vuye.xvs91rp.xo1l8bm.x5n08af.x1tu3fi.x3x7a5m.x10wh9bi.x1wdrske.x8viiok.x18hxmgj'))
   .sort((a, b) => {
     const d2 = (new Date(b.querySelector('time').dateTime).getTime() || -Infinity)
     const d1 = (new Date(a.querySelector('time').dateTime).getTime() || -Infinity)
@@ -52,7 +58,7 @@ chronological.forEach(post => feed.appendChild(post))`
   },
   'randomized Instagram feed': {
     info: 'this script randomizes the order of the posts on ur Instagram feed. in the earliest days of social media our feeds were chronological. later, the data barons realized that they could maximize engagement && even influence our behavior by curating our feeds in particular ways. in addition to making them richer by making us even more hooked, Meta (aka Facebook, Instagram, etc) discovered in 2014 that they could even <a href="https://www.theguardian.com/technology/2014/jun/30/facebook-emotion-study-breached-ethical-guidelines-researchers-say" target="_blank">manipulate our emotions</a>.',
-    code: `const feed = document.querySelector('._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abc0._abcm > div > div')
+    code: `feed = document.querySelector('.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1uhb9sk.x1plvlek.xryxfnj.x1c4vz4f.x2lah0s.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1 > div > div')
 for (let i = feed.children.length; i >= 0; i--) {
   const randomPost = feed.children[Math.random() * i | 0]
   feed.appendChild(randomPost)
@@ -62,12 +68,14 @@ for (let i = feed.children.length; i >= 0; i--) {
     info: `this script will remove Google services from Google search results. "Have you noticed that Google search results often turn up a lot of Google content at the top?", investigative journalists at the Markup revealed that <a href="https://themarkup.org/google-the-giant/2020/07/28/google-search-results-prioritize-google-products-over-competitors" target="_blank">
     41% of the first page of Google search results is taken up by Google products</a>. this has become the subject anti-trust cases against Google.`,
     code: `const results = document.querySelector('#rso')
-const sansGoogle = [...results.children].filter(r => {
-  const a = r.querySelector('.yuRUbf > a')
-  return (a && !a.href.includes('google'))
+results.querySelectorAll('.hlcw0c').forEach(r => {
+  const a = r.querySelector('a')
+  if (a && a.href.includes('google')) r.remove()
 })
-results.innerHTML = ''
-sansGoogle.forEach(r => results.appendChild(r))`
+results.querySelectorAll('.MjjYud').forEach(r => {
+  const a = r.querySelector('a')
+  if (a && a.href.includes('google')) r.remove()
+})`
   },
   'sans-Amazon results': {
     info: 'this script will remove Amazon brand (including private-label brands) products from Amazon search results. "Amazon has registered more than 150 private-label brands with the U.S. Patent and Trademark Office and carries hundreds of thousands of items from these house brands on its site. A recent <a href="https://themarkup.org/amazons-advantage/2021/10/14/amazon-puts-its-own-brands-first-above-better-rated-products" target="_blank">investigation</a> by The Markup found that the online shopping behemoth often gives its own brands and exclusive products a leg up in search results over better-rated competitors." this script uses a <a href="https://github.com/the-markup/investigation-amazon-brands/tree/master/data/output/datasets/trademarks" target="_blank">database of Amazon brands</a> created by investigative journalists at the Markup.',
