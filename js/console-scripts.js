@@ -25,10 +25,11 @@ const scripts = {
   },
   'infinite scroll': {
     info: 'many of these scripts are meant to be applied to social feeds, but these feeds generally appear/build up as u scroll. this means posts which appear from scrolling past the last post to have been manipulated by any given code snippet will not be effected. this snippet of code can be used to automatically scroll through a page. u can stop the auto-scrolling by running <code>clearTimeout(scrolltimer)</code>',
-    code: `function infiniteScroll() {
+    code: `function infiniteScroll () {
     window.scrollBy(0,1);
     scrolltimer = setTimeout(infiniteScroll,10);
-}`
+}
+infiniteScroll()`
   },
   'remove Instagram ads': {
     info: 'this snippet removes all "sponsored" posts from your Instagram feed. a simple gesture, yet a consequential one, hyper-targeting us w/ads is at the center of Instagram\'s business model.',
