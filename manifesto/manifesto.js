@@ -2,6 +2,16 @@
 // ._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_.
 // -~,_.._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:
 // ~-:;:-~,_.._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,~-:;:-~,_._,
+const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage
+const terms = [
+  { com: 'google.com', tos: 'https://policies.google.com/terms' },
+  { com: 'youtube.com', tos: 'https://www.youtube.com/t/terms' },
+  { com: 'facebook.com', tos: 'https://www.facebook.com/terms' },
+  { com: 'instagram.com', tos: 'https://help.instagram.com/581066165581870' },
+  { com: 'bing.com', tos: 'https://www.bing.com/new/summaryofterms' },
+  { com: 'twitter.com', tos: 'https://twitter.com/en/tos' },
+  { com: 'x.com', tos: 'https://x.com/en/tos' }
+]
 
 function next (stage) {
   if (!stage) {
@@ -29,14 +39,22 @@ function next (stage) {
   document.body.dataset.tmstage = stage
 }
 
-function createBanner () {
-  const check = checkDevTools()
-  if (check.open) next(5)
+function init () {
+  // if we're on a TOS page do nothing
+  const thisURL = window.location.toString()
+  const tosPages = terms.map(o => o.tos)
+  if (tosPages.includes(thisURL)) return
 
+  // if dev tools are open, jump to stage 5
+  const check = checkDevTools()
+  if (check.open) return next(5)
+
+  // if presentation has started, do nothing
   const ran = document.querySelector('#tactical-misuse-intro') ||
     document.querySelector('#tm__main')
   if (ran) return
 
+  // otherwise, create the marquee banner
   const banner = document.createElement('div')
   banner.id = 'tactical-misuse-intro'
   banner.style.position = 'fixed'
@@ -413,7 +431,7 @@ function part1 () {
     slide.style.borderWidth = '4vw'
     const cnt = div.querySelector('#tm__cnt')
     cnt.style.opacity = '1'
-    slide.style.background = 'rgba(0,0,0,0.8)'
+    slide.style.background = 'rgba(0,0,0,0.875)'
     setTimeout(() => {
       saying.style.display = 'block'
       asciiWave(saying, false, () => {
@@ -455,15 +473,6 @@ function part1 () {
   function part1c () {
     const cnt = document.querySelector('#tm__cnt')
     cnt.style.opacity = 0
-    const terms = [
-      { com: 'google.com', tos: 'https://policies.google.com/terms' },
-      { com: 'youtube.com', tos: 'https://www.youtube.com/t/terms' },
-      { com: 'facebook.com', tos: 'https://www.facebook.com/terms' },
-      { com: 'instagram.com', tos: 'https://help.instagram.com/581066165581870' },
-      { com: 'bing.com', tos: 'https://www.bing.com/new/summaryofterms' },
-      { com: 'twitter.com', tos: 'https://twitter.com/en/tos' },
-      { com: 'x.com', tos: 'https://x.com/en/tos' }
-    ]
     const TOS = terms.filter(o => window.location.toString().includes(o.com)).map(o => o.tos)[0]
     setTimeout(() => {
       cnt.innerHTML = `
@@ -475,7 +484,11 @@ function part1 () {
       `
       cnt.style.opacity = 1
       const tos = cnt.querySelector('a')
-      tos.setAttribute('href', TOS)
+      // tos.setAttribute('href', TOS)
+      tos.addEventListener('click', (event) => {
+        event.preventDefault()
+        window.open(TOS, 'Terms of Service', 'left=100,top=100,width=450,height=320')
+      })
       const product = cnt.querySelector('.tm__next')
       product.addEventListener('click', part1d)
     }, 1000)
@@ -788,9 +801,17 @@ function part5 () {
   const introTxt = dev.orientation === 'horizontal'
     ? 'Below u\'ll find' : 'On the side here u\'ll find'
 
-  const starterText = `${introTxt} the Web Developer Tools, intended to be used by the coders who made this site to test/debug it; we can && must tactically misuse these tools to reclaim agency from the data barons.
+  const ins = (navigator.platform.toUpperCase().indexOf('MAC') >= 0) ? 'Elements' : 'Inspector'
+  const firstPassage = `${introTxt} the Web Developer Tools, intended to be used by the coders who made this site to test/debug it; we can && must tactically misuse these tools to reclaim agency from the data barons.
   <br><br>
-  choose ur hack vector: <a data-link="inspector.0">Inspector</a>, <a data-link="console.0">Console</a>, <a data-link="network.0">Network</a>, <a data-link="eof.0">[EOF]</a>`
+  choose ur hack vector: <a data-link="inspector.0">${ins}</a>, <a data-link="console.0">Console</a>, <a data-link="network.0">Network</a>
+  <br><br>
+  this only just scratches the surface, but we can <a data-link="eof.0">go deeper</a>`
+
+  let textToLoad = firstPassage
+  storage.local.get(['cnsl'], function (result) {
+    if (result.cnsl) textToLoad = loadCnt(result.cnsl)
+  })
 
   function setupLinks () {
     document.querySelector('#tm__nfo').querySelectorAll('a').forEach(link => {
@@ -819,44 +840,51 @@ function part5 () {
 
   function loadCnt (type) {
     if (!type) return
+    storage.local.set({ cnsl: type })
+
     const a = type.split('.')
+    const dev = checkDevTools()
+    const side = dev.orientation === 'horizontal' ? 'below' : 'next to'
     const site = window.location.toString().split('.').filter(s => !s.includes('http') && !s.includes('com'))[0]
     const ig = site === 'instagram'
     const qa = site === 'quora'
     const bg = site === 'bing'
     const fb = site === 'facebook'
+    const ins = b === 'Firefox' ? 'Inspector' : 'Elements'
+    const css = b === 'Firefox' ? 'Rules' : 'Styles'
     const data = {
       inspector: [
-        `click on "Inspector"; this tab pulls back the digital curtain, it allows us not only to see but methodically disect + modify the code behind this website.
+        `click on "${ins}"; this tab pulls back the digital curtain, it allows us not only to see but methodically disect + modify the code behind this website.
         <br><br>
-        click the arrow icon (top-left of the panel) to activate it, then hover over the website to choose an element to inspect, once clicked u can modify this elements code using the inspector. changes are not permanent (u can refresh anytime to start anew), so poke + prod + hack.
+        click the inspector arrow (⇱) icon (top-left of the panel) to activate it, then hover over the website to choose an element to inspect, once clicked u can modify this elements code using the ${ins} tab or the ${css} sub-tab ${side} it. changes are not permanent (u can refresh anytime to start anew), so poke + prod + hack.
         <br><br>
-        insights gained through experimentation lead to <a data-link="inspector.1">tactical modifications</a>.`,
-        `the inspector can be used to hack around the "dark patterns" of UI/UX designed to keep u coming back && handing over more data. some sites, like ${ig ? 'this one' : '<a href="https://instagram.com">Instagram</a>'}, prevent u from right-click saving images, other sites like ${qa ? 'this one' : '<a href="https://www.quora.com/What-does-surveillance-capitalism-mean">Quora</a>'} force u to hand over identifiable information before u can read an otherwise public post... ${ig ? 'but we can <a data-link="inspector.2">tactically hack</a> around this' : qa ? 'but we can <a data-link="inspector.3">tactically hack</a> around this' : 'visit either of those sites + open the Inspector again && i\'ll explain how to tactically hack around this'}.`,
-        'use the inspector icon (⇱) to select an image on ur instagram feed. the inspector will jump to a <code style="color:#75bfff">&ltdiv&gt;</code> element in the code, just above it should be another <code style="color:#75bfff">&ltdiv&gt;</code>, click on it\'s triangle to reveal the <code style="color:#75bfff">&ltimg&gt;</code> element inside. hover over the img\'s <code style="color:#ff7de9">src</code> attribute to reveal the image\'s URL. Click on it (or double click to select it then copy+paste) to view the file in a new tab. u can now right-click save it.',
-        `Quora lets u read the first post, but click on one of the "Related questions" once or twice && u will be blocked by a screen coercing u into revealing ur identity + handing over more data. use the inspector icon (⇱) to select the dark blurred background of the login screen. To the right of the selected HTML code u'll see some CSS code in the ${b === 'Firefox' ? 'Rules' : 'Styles'} sub-tab. There should be a CSS property for this element called <code style="color:#75bfff">display</code>, with a value of <code style="color:#ff7de9">flex</code>, click on the value && change it to <code style="color:#ff7de9">none</code>. Once the screen is gone, we'll need to remove the blur effect, notice that a couple of elements above the selected <code style="color:#75bfff">&ltdiv&gt;</code> there's another with a <code style="color:#b98eff">blur(3px)</code>, click on that, then in the ${b === 'Firefox' ? 'Rules' : 'Styles'} sub-tab un-check the box next to <code style="color:#75bfff">&ltfilter: blur(3px)&gt;</code>. Now we can read, but we can not scroll the page. To fix this, scroll to the top of the HTML code in the Inspector && click on the <code style="color:#75bfff">&ltbody&gt;</code> element. Then in the ${b === 'Firefox' ? 'Rules' : 'Styles'} sub-tab un-check the box next to CSS code <code style="color:#75bfff">overflow: hidden</code>.`
+        insights gained through experimentation lead to <a data-link="inspector.1">more tactical modifications</a>.`,
+        `the inspector can be used to hack around the "dark patterns" of UI/UX designed to keep u coming back && handing over more data. some sites, like ${ig ? 'this one' : '<a href="https://instagram.com">Instagram</a>'}, prevent u from right-click saving images, other sites like ${qa ? 'this one' : '<a href="https://www.quora.com/What-does-surveillance-capitalism-mean">Quora</a>'} force u to hand over identifiable information before u can read an otherwise public post... ${ig ? 'but we can <a data-link="inspector.2">tactically hack</a> around this' : qa ? 'but we can <a data-link="inspector.3">tactically hack</a> around this' : `visit either of those sites + open the ${ins} again && i'll explain how to tactically hack around this`}.`,
+        `use the inspector icon (⇱) to select an image on ur instagram feed (u must be logged in). the ${ins} tab will jump to a <code style="color:#75bfff">&ltdiv&gt;</code> element in the HTML code, just above it should be another <code style="color:#75bfff">&ltdiv&gt;</code>, click on it's triangle to reveal the <code style="color:#75bfff">&ltimg&gt;</code> element inside. hover over the img's <code style="color:#ff7de9">src</code> attribute to reveal the image's URL. Click on it (or double click to select it then copy+paste) to view the file in a new tab. u can now right-click save it.`,
+        `Quora lets u read the first post, but click on one of the "Related questions" (top right of the page) once or twice && u will be blocked by a screen coercing u into revealing ur identity + handing over more data. click the inspector icon (⇱) to activiate it && then click/select the dark blurred background of the login screen. Then ${side} the selected HTML code u'll see some CSS code in the ${css} sub-tab. There should be a CSS property for this element called <code style="color:#75bfff">display</code>, with a value of <code style="color:#ff7de9">flex</code>, click on the value && change it to <code style="color:#ff7de9">none</code>. Once the screen is gone, we'll need to remove the blur effect, notice that a couple of elements above the selected <code style="color:#75bfff">&ltdiv&gt;</code> there's another with a <code style="color:#b98eff">blur(3px)</code>, click on that, then in the ${css} sub-tab un-check the box next to <code style="color:#75bfff">filter: blur(3px)</code>. Now we can read, but we can not scroll the page. To fix this, scroll to the top of the HTML code in the ${ins} && click on the <code style="color:#75bfff">&ltbody&gt;</code> element. Then in the ${css} sub-tab un-check the box next to CSS code <code style="color:#75bfff">overflow: hidden</code>.`
       ],
       console: [
-        `click on "Console"; this tab displays any log or error messages from the site's JavaScript code. it can also be used to (temporarily) modify the site in powerful + programatic ways. ${fb || ig ? 'this site of course would prefer u didn\'t do that, hence the discouraging message at the top, but we\'re not here to play by their rules' : ''}. clear the console by clicking the ${b === 'Firefox' ? 'Trash (🗑) icon' : 'Clear (🚫) icon'}. Then copy+paste && "Enter" the following code into the Console:<br>
+        `click on "Console"; this tab displays any log or error messages from the site's JavaScript code. it can also be used to (temporarily) modify the site in powerful + programatic ways. ${fb || ig ? 'this site of course would prefer u didn\'t do that, hence the discouraging message at the top, but we\'re not here to play by their rules' : ''}. clear the console by clicking the ${b === 'Firefox' ? 'Trash (🗑) icon' : 'Clear (⊘) icon'}. Then copy+paste && "Enter" the following code into the Console (<i style="opacity:0.7">if this is ur first time pasting code into the Console, u'll need to first type/enter: allow pasting</i>):<br>
         <div id="cli__code" data-index="0"><pre role="presentation"><span role="presentation"><span class="cm-variable">document</span>.<span class="cm-property">body</span>.<span class="cm-property">style</span>.<span class="cm-property">transform</span> <span class="cm-operator">=</span> <span class="cm-string">'rotate(180deg)'</span></span></pre></div>
+        <a id="tm__script">click here for another script</a>.
         <br>
-        <a id="tm__script">click here for another script</a>. refresh this page to begin anew. if this is ur first time pasting code into the Console, u'll need to first type + enter: allow pasting
+        refresh this page to begin anew.
         <br><br>
-        there are so many more scripts we can run to practice <a data-link="console.1">tactical misuse</a>.`,
-        'the scripts shared here are simple digital <a href="https://en.wikipedia.org/wiki/D%C3%A9tournement" target="_blank">détournement</a> hacks, but this is only the beginning. we can run scripts which modify our feeds in ways that free us from algorithmic influence by, for example, removing metrics, "recommended" posts, ads && other trackers && reordering the feeds themselves. for more scripts visit <a href="https://tacticalmisuse.net/scripts/" target="_blank">https://tacticalmisuse.net/scripts/</a>'
+        there are so many more scripts, beyond these digital <a href="https://en.wikipedia.org/wiki/D%C3%A9tournement" target="_blank">détournement</a> hacks, which we can run to <a data-link="console.1">tactically misuse</a> these platforms.`,
+        'we can also run scripts which modify our feeds in ways that free us from algorithmic influence by, for example, removing <a href="https://tacticalmisuse.net/scripts/#Twitter%20demetricator" target="_blank">metrics</a>, "<a target="_blank" href="https://tacticalmisuse.net/scripts/#remove%20Instagram%20%22suggestions%22">recommended</a>" posts, <a target="_blank" href="https://tacticalmisuse.net/scripts/#remove%20Instagram%20ads">ads && other trackers</a> && <a target="_blank" href="https://tacticalmisuse.net/scripts/#chronological%20Instagram%20feed">reordering the feeds themselves</a>. We can also combine/package them as <a href="https://tacticalmisuse.net/how/add-ons/" target="_blank">add-ons/extensions</a> (just like this manifesto) to even greater effect. for more scripts visit <a href="https://tacticalmisuse.net/scripts/" target="_blank">https://tacticalmisuse.net/scripts/</a>'
       ],
       network: [
         `click on "Network"; this tab monitors all the data traveling between ur browser && the site's server. some of this data might be obvious (all the the code && media files that make up the site) other bits of data might be less obvious. click on any of the data packets to investigate it further (if u don't see any listed here refresh the page with this tab open)
         <br><br>
         exploration here can lead to <a data-link="network.1">tactical insights</a>.`,
         `by observing which/when packets were leaving (POST) the browser, a privacy researcher noticed some time ago that Facebook was recording everything users typed into a message box or comment field even if (or especially when) they decided not to post it. a discovery which was later confirmed when Facebook published a paper on what they called "<a href="https://www.theatlantic.com/technology/archive/2013/04/71-of-facebook-users-engage-in-self-censorship/274982/" target="_blank">self-censorship</a>". On ${bg ? 'this site' : '<a href="https://bing.com">Bing</a>'} u might notice some other ${bg ? '<a data-link="network.2">mischievous network traffic</a>' : 'mischievous network traffic'}.`,
-        `when Bing first loads, the Network tab is flooded with data packets. lets remove those out by clicking the ${b === 'Firefox' ? 'Trash (🗑) icon' : 'Clear (🚫) icon'}. at this point the Network tab should remain quiet unless u click or hover over some interactive component of the website. however, u'll notice that on this site, even the most subtle movement anywhere on the page will POST data to Microsoft. it turns out that Bing <a href="https://github.com/microsoft/mouselog" target="_blank">tracks all ur mouse movements</a> on the site, at first to see if they could use this data to "<a href="https://www.wsj.com/articles/clues-to-parkinsons-disease-from-how-you-use-your-computer-1527600547" target="_blank">predict</a>" which users have neurodegenerative disorders, like Parkinson’s disease (legally published in <a href="https://www.nature.com/articles/s41746-018-0016-6" target="_blank">Nature</a> given the Bing <a href="https://www.bing.com/new/summaryofterms" tareget="_blank">TOS</a>). Those are valuable "predictions", who might the data barons choose to sell ur medical future to?`
+        `when Bing first loads, the Network tab is flooded with data packets. lets remove those out by clicking the ${b === 'Firefox' ? 'Trash (🗑) icon' : 'Clear (⊘) icon'}. at this point the Network tab should remain quiet unless u click or hover over some interactive component of the website. however, u'll notice that on this site, even the most subtle movement anywhere on the page will POST data to Microsoft. it turns out that Bing <a href="https://github.com/microsoft/mouselog" target="_blank">tracks all ur mouse movements</a> on the site, at first to see if they could use this data to "<a href="https://www.wsj.com/articles/clues-to-parkinsons-disease-from-how-you-use-your-computer-1527600547" target="_blank">predict</a>" which users have neurodegenerative disorders, like Parkinson’s disease. Those are valuable "predictions", who might the data barons choose to sell ur medical future to?`
       ],
       eof: [
         `u do not need to be an expert hacker to reclaim ur agency<br>
         u can && must hack algorithms now<br>
         make tactical misuse a part of ur everyday practice<br>
-        visit <a href="https://tacticalmisuse.net">https://tacticalmisuse.net</a> to dive deeper`
+        visit <a href="https://tacticalmisuse.net">https://tacticalmisuse.net</a> to learn more`
       ]
     }
 
@@ -866,7 +894,8 @@ function part5 () {
     `
 
     document.querySelector('#tm__bck').addEventListener('click', () => {
-      document.querySelector('#tm__nfo').innerHTML = starterText
+      storage.local.set({ cnsl: null })
+      document.querySelector('#tm__nfo').innerHTML = firstPassage
       setupLinks()
     })
 
@@ -939,7 +968,7 @@ function part5 () {
 
     </style>
     <div id="tm__nfo">
-      ${starterText}
+      ${textToLoad}
     </div>
   `
   document.body.appendChild(div)
@@ -952,11 +981,11 @@ function part5 () {
       const main = document.querySelector('#tm__main')
       if (main) main.remove()
       clearInterval(window.checkConsole)
-      setTimeout(() => createBanner(), 100)
+      setTimeout(() => init(), 100)
     }
   }, 500)
 }
 
-window.addEventListener('load', createBanner)
+window.addEventListener('load', init)
 window.addEventListener('scroll', debouncedScrollCall)
-createBanner()
+init()

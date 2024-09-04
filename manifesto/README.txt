@@ -3,7 +3,7 @@
 ░██████████████████████████████████████████████████████████████████
 ░████████░ ░███████████████████████████████████████████████████████░
 ░██████                                             ░    ▓█████████░
-░██████        You can && must hack algorithms NOW!       █████████▓
+░██████         u can && must hack algorithms NOW!        █████████▓
 ░███████  ░░                                             ░██████████
 ▓███████████████████████████████████████▓██████████████▒████████████
 ███████████████████████████████████████████████████████████▓████████
@@ -28,12 +28,7 @@
 ████████████████████████░                  ░████████████████████████
 █████████████████████████                  █████████████████████████░
 █████████████████████████                  █████████████████████████░
-█▓█████████████▓█████████                  █████████████████████████
 █████████████████████████                 ░█████████████████████████
-█████████████████████████                  █████████████████████████
-████████████████████████▓                  █████████████████████████
-▓████████████████████████                  █████████████████████████
-░████████████████████████                  █████████████████████████
 ░████████████████████░███                  ████████████████████████▒
 ████████████████████████                  ████████████████████████░
       ░░  ░                              ░  ░░░
@@ -49,7 +44,7 @@
 ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║██║     ███████╗███████║   ██║   ╚██████╔╝
 ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝    ╚═════╝
 
-░       ░░   ░                              ░░   ░                  v1.0 ░
+░       ░░   ░                              ░░   ░                  v1.1 ░
 
 
 
@@ -65,33 +60,86 @@ which serves as an introduction to the
                                 of tactical misuse
 
 
-                /\                                  /\
-                \//\   /\      /\ /\   /\____       \/_____              _____
+
+this is not for the faint of heart, nor for those who have "nothing to hide"
+(who ultimately don't understand how these algorithms exploit/manipulate them)
+   |      |      |      |      |      |      |      |      |      |      |
+_   _| _   _| _   _| _   _| _   _| _   _| _   _| _   _| _   _| _   _| _   _|
+  _|     _|     _|     _|     _|     _|     _|     _|     _|     _|     _|
+    _| _   _| _   _| _   _| _   _| _   _| _   _| _   _| _   _| _   _| _   _|
+   |      |      |      |      |      |      |      |      |      |      |
+this is for those who've had enough, those who are curious && motivated to take
+the time to learn + explore + experiment + remix + hack + détourn + culture jam
+
+   /\                                             /\
+   \/                                             \/
+                 /\                                  /\
+                 \//\   /\      /\ /\   /\____       \/_____              _____
 _____       _____  \ \ / /____  \ \\ \ / /____\ _____  \____\        _____\____\
 \____\____/\\____\  \ \ /\____\\ \ \\ \ /_____/\\____\ _____/\_____/\\____\____
-    \____\/         \//      \/  \/ \// \____\/       \____\/\____\/     \____\
+     \____\/         \//      \/  \/ \// \____\/       \____\/\____\/     \____\
+                             /\
+    /\       INSTRUCTIONS    \/ _____                           /\
+    \/       _____       _____  \____\                          \/
+             \____\____/\\____\            /\
+                  \____\/                  \/
+    __                                           _____/\
+  _/  \                                    _____/\____\/
+ |   ▓▓                                    \____\/
+  \▓▓▓▓
+   | ▓▓
+   | ▓▓
+  _| ▓▓_
+ |   ▓▓ \
+  \▓▓▓▓▓▓
+
+  DOWNLOAD THE ADD-ON/EXTENSION:
+  https://tacticalmisuse.net/manifesto/tactical-misuse-manifesto.zip
+                                                          && unzip it
+
+  ______
+ /      \
+|  ▓▓▓▓▓▓\
+ \▓▓__| ▓▓
+ /      ▓▓
+|  ▓▓▓▓▓▓
+| ▓▓_____
+| ▓▓     \
+ \▓▓▓▓▓▓▓▓
+
+  INSTALL THE ADD-ON/EXTENSION:
+
+         on Firefox: visit ->       about:debugging
+                  click on ->       This Firefox
+                  click on ->       Load Temporary Add-on...
+navigate to the downloaded
+   add-on/extension folder,
+                     select ->       manifest.json
 
 
+          on Chrome: visit ->       chrome://extensions
+                 toggle on ->       Developer mode
+                  click on ->       Load unpacked
+navigate to the downloaded
+   add-on/extension folder,
+                    select ->      (the downloaded + unzipped folder)
 
-DOWNLOAD: https://tacticalmisuse.net/manifesto/tactical-misuse-manifesto.zip
+  ______
+ /      \
+|  ▓▓▓▓▓▓\
+ \▓▓__| ▓▓
+  |     ▓▓
+ __\▓▓▓▓▓\
+|  \__| ▓▓
+ \▓▓    ▓▓
+  \▓▓▓▓▓▓
 
-INSTRUCTIONS:
+          once the addon/extension is installed in ur browser
+          visit any number of surveillance capitalist platforms
+         (google.com, facebook.com, youtube.com, instagram.com, etc)
 
-        on Firefox: visit ->       about:debugging
-                 click on ->       This Firefox
-                 click on ->       Load Temporary Add-on...
-  navigate to this folder,
-                   select ->       manifest.json
+          NOTE: it's best to visit a platform u are logged into
+          or which otherwise has some content (ex: search results)
 
-
-        on Chrome: visit ->       chrome://extensions
-               toggle on ->       Developer mode
-                click on ->       Load unpacked
-  navigate to this folder,
-                  select ->       (this folder)
-
-
-
-  once the addon/extension is installed in ur browser
-  visit any number of surveillance capitalist platforms
-  (google.com, facebook.com, youtube.com, instagram.com, etc)
+          u will see a banner, click it to begin
+                                          (keep clicking to cont.)

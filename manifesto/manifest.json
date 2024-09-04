@@ -6,6 +6,9 @@
   "icons": {
     "48": "icon.png"
   },
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
       "matches": ["*://*.google.com/*"],
