@@ -113,17 +113,18 @@ _____       _____  \ \ / /____  \ \\ \ / /____\ _____  \____\        _____\____\
          on Firefox: visit ->       about:debugging
                   click on ->       This Firefox
                   click on ->       Load Temporary Add-on...
-navigate to the downloaded
-   add-on/extension folder,
-                     select ->       manifest.json
+           navigate to the
+"tactical-misuse-manifesto"
+ folder u downloaded, open ->       manifest.json
 
 
           on Chrome: visit ->       chrome://extensions
                  toggle on ->       Developer mode
                   click on ->       Load unpacked
-navigate to the downloaded
-   add-on/extension folder,
-                    select ->      (the downloaded + unzipped folder)
+            navigate to the
+"tactical-misuse-manifesto"
+ folder u downloaded, open ->       (the folder)
+
 
   ______
  /      \
@@ -135,12 +136,13 @@ navigate to the downloaded
  \▓▓    ▓▓
   \▓▓▓▓▓▓
 
-          once the addon/extension is installed in ur browser
-          visit any number of surveillance capitalist platforms
-         (google.com, facebook.com, youtube.com, instagram.com, etc)
+  VISIT A SURVEILLANCE CAPITALIST WEBSITE
 
-          NOTE: it's best to visit a platform u are logged into
-          or which otherwise has some content (ex: search results)
+    visit any number of surveillance capitalist platforms
+    (google.com, facebook.com, youtube.com, instagram.com, etc)
 
-          u will see a banner, click it to begin
+    NOTE: it's best to visit a platform u are logged into
+    or which otherwise has some content (ex: search results)
+
+    u will see a banner, click it to begin
                                           (keep clicking to progress)
