@@ -93,6 +93,40 @@
         }
       }
 
+      #how-to-install {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.75);
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #how-to-install ol {
+        padding: 20px 70px;
+        background: black;
+        background: black;
+        border: 1px solid white;
+      }
+
+      #how-to-install li {
+        padding-bottom: 20px;
+      }
+
+      #close-how-to {
+        color: white;
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        font-size: 4rem;
+        cursor: pointer;
+        font-weight: 100;
+      }
+
     </style>
   </head>
   <body>
@@ -115,7 +149,7 @@
         </div>
         <div class="top-right">
           <p id="info">
-            this editor lets you create simple Firefox add-ons (aka <a href="https://extensionworkshop.com/" target="_blank">web extensions</a>) by editing two files the,  <code>manifest.json</code> (ur add-on's metadata) && <code>main.js</code> (ur add-on's script).
+            this editor lets u create simple Firefox add-ons (aka <a href="https://extensionworkshop.com/" target="_blank">web extensions</a>) by editing two files the,  <code>manifest.json</code> (ur add-on's metadata) && <code>main.js</code> (ur add-on's script).
           </p>
           <p id="console"></p>
         </div>
@@ -126,6 +160,19 @@
         <div id="editor"></div>
       </section>
 
+    </section>
+
+    <section id="how-to-install">
+      <div id="close-how-to">✕</div>
+      <ol>
+        <li>press the <button id="download2">download addon</button> button</li>
+        <li>open your "Downloads" folder to unzip ur download</li>
+        <li>in Firefox, open a new tab, enter <code>about:debugging</code></li>
+        <li>in left panel menu, click on <code>This Firefox</code></li>
+        <li>on the top right, under "Temporary Extensions" click on <code>Load Temporary Add-on...</code></li>
+        <li>navigate to ur downloads and choose ur <code>manifest.json</code></li>
+        <li>for more info visit <a href="/how/add-ons" target="_blank">how to .. add-ons</a></li>
+      </ol>
     </section>
 
     <script src="/js/ascii.js"></script>

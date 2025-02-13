@@ -36,6 +36,33 @@
         margin: 0.5rem;
         cursor: pointer;
       }
+
+      #info {
+        position: fixed;
+        z-index: 100;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.75);
+        display: none;
+        overflow: scroll;
+      }
+      #info p {
+        border: 1px solid white;
+        background: black;
+        padding: 20px;
+      }
+      #close-info {
+        color: white;
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        font-size: 4rem;
+        cursor: pointer;
+        font-weight: 100;
+      }
     </style>
   </head>
   <body>
@@ -57,7 +84,10 @@
       </div>
 
       <div class="full-width snippet-menu">
-        <select id="snippets"><option value="pick-one">[CHOOSE ONE]<option></select>
+        <div>
+          <button id="info-btn">instructions</button>
+          <select id="snippets"><option value="pick-one">[CHOOSE ONE]<option></select>
+        </div>
         <button id="copy">copy + paste</button>
       </div>
 
@@ -67,33 +97,39 @@
         <p id="edu" data-skip="true">...</p>
       </div>
 
-      <div class="double">
+      <div style="border-top: 1px solid white; margin-top: 50px;">
         <p>
-          this page contains/collects various different JavaScript snippets for the purpose of tactically misusing various online surveillance platforms <span style="opacity: 0.5">(last updated 09.04.2024)</span>. refer to my notes on the browser's <a href="/how/dev-tools">dev tools</a>, specifically the <a href="/how/dev-tools/console.html">Console</a> tab if u're unfamiliar w/these. i've also got notes on how to package any of the following snippets (or variations thereof) as browser <a href="/how/addon-ons">addon-ons</a> for quicker re-use && sharing w/others.
-        </p>
-
-        <p>
-          use the drop-down menu to switch between different scripts, click the "copy+paste" button to copy the current script to ur clipboard && then use the Ctrl + v shortcut key to paste it into the Console (Cmd + v on Mac). u can also double click various parts of the code w/in any of these snippets to learn more about each piece of the code.
+          this page contains/collects various different JavaScript snippets for the purpose of tactically misusing various online surveillance platforms <span style="opacity: 0.5">(last updated 09.04.2024)</span>.
         </p>
       </div>
 
+      <div id="info">
+        <div id="close-info">✕</div>
+        <div class="double">
+          <p>
+            Use the drop-down menu to switch between different scripts (u can also double click various parts of the code w/in any of these snippets to learn more about each piece of the code.). Click the "copy+paste" button to copy the current script to ur clipboard && then open the Developer Console (Fn + F12) && paste (<span class="hotkey"></span> + v) && enter the code.
+          </p>
+
+          <p>
+            For a more detailed explanation refer to my notes on the browser's <a href="/how/dev-tools">dev tools</a>, specifically the <a href="/how/dev-tools/console.html">Console</a> tab if u're unfamiliar w/these. i've also got notes on how to package any of the following snippets (or variations thereof) as browser <a href="/how/addon-ons">addon-ons</a> for quicker re-use && sharing w/others using the addon-on <a href="/editor">editor</a>.
+          </p>
+        </div>
+      </div>
 
 
-    <a href="/">
+    <!-- <a href="/tools">
 <pre class="center" style="margin-bottom:50px;">
 ░░ █▄▄ ▄▀█ █▀▀ █▄▀ ░░
 ░░ █▄█ █▀█ █▄▄ █░█ ░░
 </pre>
-    </a>
-
-
-      <script src="/js/ascii.js"></script>
-      <script src="/js/tween.umd.js"></script>
-      <script src="/js/BGGradient.js"></script>
-      <script src="/js/nn.min.js"></script>
-      <script src="/js/main.js"></script>
-      <script src="/js/netitor.min.js"></script>
-      <script src="/js/console-scripts.js"></script>
+    </a> -->
     </section>
+    <script src="/js/ascii.js"></script>
+    <script src="/js/tween.umd.js"></script>
+    <script src="/js/BGGradient.js"></script>
+    <script src="/js/nn.min.js"></script>
+    <!-- <script src="/js/main.js"></script> -->
+    <script src="/js/netitor.min.js"></script>
+    <script src="/js/console-scripts.js"></script>
   </body>
 </html>

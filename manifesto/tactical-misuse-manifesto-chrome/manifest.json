@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Tactical Misuse Manifesto",
+  "version": "1.0",
+  "description": "An interactive artwork aimed at teaching you how to disrupt the exploitative algorithms and dark patterns of surveillance capitalism",
+  "icons": {
+    "64": "icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/*",
+        "*://*.youtube.com/*",
+        "*://*.facebook.com/*",
+        "*://*.instagram.com/*",
+        "*://*.bing.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.quora.com/*"
+      ],
+      "js": ["manifesto.js"]
+    }
+  ],
+  "action": {
+    "default_icon": "icon.png"
+  }
+}

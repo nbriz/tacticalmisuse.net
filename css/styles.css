@@ -53,6 +53,30 @@ section {
   margin: 100px auto;
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+}
+
+nav a {
+  font-weight: 100;
+  text-decoration: none;
+}
+
+nav .nav-spacer{
+  border-right: 1px solid white;
+  height: 60px;
+}
+
+@media (max-width: 680px) {
+  nav {
+    flex-direction: column;
+  }
+}
+
+
 h1 {
   font-weight: lighter;
   font-size: 4rem;
@@ -341,4 +365,23 @@ p.center-box {
   .table-of-contents {
     font-size: 1.3rem;
   }
+}
+
+/* tools page ------------------------------------------------- */
+
+.tool-module {
+  margin: 40px auto;
+  width: 640px;
+  border: 1px solid white;
+  padding: 20px;
+}
+
+.tool-module a {
+  font-size: 2rem;
+  font-weight: 100;
+  text-decoration: none;
+}
+
+.tool-module p {
+  padding-left: 50px;
 }

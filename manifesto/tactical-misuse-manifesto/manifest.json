@@ -2,9 +2,9 @@
   "manifest_version": 2,
   "name": "Tactical Misuse Manifesto",
   "version": "1.0",
-  "description": "in progress",
+  "description": "An interactive artwork aimed at teaching you how to disrupt the exploitative algorithms and dark patterns of surveillance capitalism",
   "icons": {
-    "48": "icon.png"
+    "64": "icon.png"
   },
   "permissions": [
     "storage"

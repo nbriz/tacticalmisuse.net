@@ -13,6 +13,21 @@ const terms = [
   { com: 'x.com', tos: 'https://x.com/en/tos' }
 ]
 
+function updateHTML (element, newHTML) {
+  if (!(element instanceof window.Element)) {
+    throw new Error('Invalid element provided')
+  }
+
+  const template = document.createElement('template')
+  template.innerHTML = newHTML
+
+  while (element.firstChild) {
+    element.removeChild(element.firstChild)
+  }
+
+  element.appendChild(template.content)
+}
+
 function next (stage) {
   if (!stage) {
     stage = document.body.dataset.tmstage
@@ -126,7 +141,7 @@ function asciiWave (ele, repeat = true, cb) {
 
     if (!repeat) {
       if (idx > waveLength) {
-        ele.innerHTML = originalHTML
+        updateHTML(ele, originalHTML)
         if (cb) cb()
         return
       }
@@ -145,7 +160,7 @@ function asciiWave (ele, repeat = true, cb) {
         if (document.body.dataset.tmstage !== '1') return
         setTimeout(() => { idx = 0; update() }, holdTime)
       } else {
-        ele.innerHTML = originalHTML
+        updateHTML(ele, originalHTML)
         if (cb) cb()
       }
       return
@@ -313,7 +328,8 @@ function injectCode (root = document) {
       if (Math.random() < 0.3) {
         const outerHTML = element.outerHTML
         const pre = document.createElement('pre')
-        pre.innerHTML = escapeHTML(outerHTML).substr(0, 100)
+        const newHTML = escapeHTML(outerHTML).substr(0, 100)
+        updateHTML(pre, newHTML)
         setTimeout(() => element.prepend(pre), Math.random() * 4000 + 1000)
       }
 
@@ -351,7 +367,7 @@ function part1 () {
 
   const div = document.createElement('div')
   div.id = 'tm__main'
-  div.innerHTML = `
+  updateHTML(div, `
     <style>
       #tm__slide {
         border: 0 solid white;
@@ -416,7 +432,7 @@ function part1 () {
         </div>
       </span>
     </div>
-  `
+  `)
   document.body.appendChild(div)
 
   const slide = div.querySelector('#tm__slide')
@@ -446,14 +462,14 @@ function part1 () {
     const cnt = document.querySelector('#tm__cnt')
     cnt.style.opacity = 0
     setTimeout(() => {
-      cnt.innerHTML = `
+      updateHTML(cnt, `
       this site is both digital mine && refinement factory. what they sell to their <i data-tmavoid="true">real</i> customers are advanced AI <span class="tm__next" data-tmavoid="true">prediction + manipulation tools</span> which...<br><br>
         <div class="tm__point">+= control ur feed</div>
         <div class="tm__point">+= capture ur attention</div>
         <div class="tm__point">+= anticipate ur actions</div>
         <div class="tm__point">+= modify ur behavior</div>
         <div class="tm__comment" data-tmavoid="true">/* all while bypassing ur awareness */</div>
-      `
+      `)
       cnt.style.opacity = 1
       const product = cnt.querySelector('.tm__next')
       product.addEventListener('click', part1c)
@@ -475,13 +491,13 @@ function part1 () {
     cnt.style.opacity = 0
     const TOS = terms.filter(o => window.location.toString().includes(o.com)).map(o => o.tos)[0]
     setTimeout(() => {
-      cnt.innerHTML = `
+      updateHTML(cnt, `
       these are among the most lucrative in the surveillance capitalist markets
       <br><br>
       trained on ur data, to exploit u, with ur <a target="_blank" data-tmavoid="true">permission</a>
       <br><br>
       these <span class="tm__next" data-tmavoid="true">algorithms</span> are deployed on all of us in insidious, unethical (yet legal) ways
-      `
+      `)
       cnt.style.opacity = 1
       const tos = cnt.querySelector('a')
       // tos.setAttribute('href', TOS)
@@ -526,7 +542,7 @@ function part2 () {
   div.style.top = '0'
   div.style.zIndex = '999999999'
   div.id = 'tm__main'
-  div.innerHTML = `
+  updateHTML(div, `
     <style>
       #tm__slide {
         transition: all 1s;
@@ -579,7 +595,7 @@ function part2 () {
         <br>we can start by <span class="tm__next">hacking</span> these walls
       </span>
     </div>
-  `
+  `)
   div.dataset.tmnocrack = true
   document.body.appendChild(div)
 
@@ -634,7 +650,7 @@ function part3 () {
   div.style.top = '0'
   div.style.zIndex = '999999999'
   div.id = 'tm__main'
-  div.innerHTML = `
+  updateHTML(div, `
     <style>
       #tm__slide {
         transition: all 1s;
@@ -681,14 +697,14 @@ function part3 () {
     </style>
     <div id="tm__slide">
       <span id="tm__cnt">
-        we can find cracks in the code, exploit them && take the power back
+        we can find cracks in the code, exploit them && take the power back,
         <br>
-        reclaim some agency && control ...at least for a moment
+        we can reclaim some agency && control ...at least for a moment
         <br>
         <span class="tm__next">would u like to try?</span>
       </span>
     </div>
-  `
+  `)
   document.body.appendChild(div)
 
   setTimeout(() => {
@@ -708,10 +724,10 @@ function part3 () {
     const msg = (navigator.platform.toUpperCase().indexOf('MAC') >= 0)
       ? 'Fn + F12 keys' : 'F12 key'
     setTimeout(() => {
-      cnt.innerHTML = `
+      updateHTML(cnt, `
         built into ur browser are Web Developer Tools, these exist to aid the coders who make these websites.
         but we can misuse these tools in creative ways. press the ${msg} on ur keyboard.
-      `
+      `)
       cnt.style.opacity = 1
     }, 1000)
 
@@ -746,7 +762,7 @@ function part4 () {
   div.style.bottom = '10px'
   div.style.zIndex = '999999999'
   div.id = 'tm__main'
-  div.innerHTML = `
+  updateHTML(div, `
     <style>
 
       #tm__nfo {
@@ -778,7 +794,7 @@ function part4 () {
     <div id="tm__nfo">
       ${introTxt} the "Web Developer Tools". Click on the 3 dots icon (top-right of the panel) to change where the panel is docked, && the gear icon to change the panel's settings. Let's <span id="tm__refresh">refresh</span> this page so that we can start with a clean slate.
     </div>
-  `
+  `)
   document.body.appendChild(div)
 
   div.querySelector('#tm__refresh').addEventListener('click', () => window.location.reload())
@@ -833,7 +849,7 @@ function part5 () {
         idx++
         if (idx >= codeExamples.length) idx = 0
         code.dataset.index = idx
-        code.innerHTML = codeExamples[idx]
+        updateHTML(code, codeExamples[idx])
       })
     }
   }
@@ -888,14 +904,14 @@ function part5 () {
       ]
     }
 
-    document.querySelector('#tm__nfo').innerHTML = `
+    updateHTML(document.querySelector('#tm__nfo'), `
       <div id="tm__bck">⇠</div>
       ${data[a[0]][a[1]]}
-    `
+    `)
 
     document.querySelector('#tm__bck').addEventListener('click', () => {
       storage.local.set({ cnsl: null })
-      document.querySelector('#tm__nfo').innerHTML = firstPassage
+      updateHTML(document.querySelector('#tm__nfo'), firstPassage)
       setupLinks()
     })
 
@@ -910,7 +926,7 @@ function part5 () {
   div.style.bottom = '10px'
   div.style.zIndex = '999999999'
   div.id = 'tm__main'
-  div.innerHTML = `
+  updateHTML(div, `
     <style>
       #tm__nfo {
         background: rgba(0, 0, 0, 0.5);
@@ -970,7 +986,7 @@ function part5 () {
     <div id="tm__nfo">
       ${textToLoad}
     </div>
-  `
+  `)
   document.body.appendChild(div)
 
   setupLinks()

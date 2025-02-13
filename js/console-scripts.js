@@ -1,8 +1,8 @@
-/* global Netitor */
+/* global Netitor, nn */
 const ne = new Netitor({
   ele: '#code', language: 'javascript', readOnly: true, theme: 'moz-dark'
 })
-
+const hotkey = nn.platformInfo().platform.includes('Mac') ? 'CMD' : 'CTRL'
 const snippets = document.querySelector('#snippets')
 const copy = document.querySelector('#copy')
 const nfo = document.querySelector('#nfo')
@@ -15,8 +15,9 @@ const scripts = {
   },
   'remove reTweets': {
     info: 'this snippet removes all the retweet buttons from a twitter feed. <a href="https://www.science.org/doi/10.1126/science.aap9559" target="_blank">studies</a> have shown that Twitter\'s retweet button heavily contributes to the spread of disinformation online, many have <a href="https://www.theatlantic.com/technology/archive/2018/10/twitter-should-kill-retweet/574321/" target="_blank">suggested removing it</a>, but so long as it triggers engagement, we\'re unlikely to see the platform make this change, despite the harm it\'s doing to our society.',
-    code: `document.querySelectorAll('.css-175oi2r.r-1kbdv8c.r-18u37iz.r-1wtj0ep.r-1ye8kvj.r-1s2bzr4').forEach(metrics => {
-    metrics.children[1].style.display = 'none'
+    code: `const reTweets = '.css-175oi2r.r-1kbdv8c.r-18u37iz.r-1wtj0ep.r-1ye8kvj.r-1s2bzr4'
+document.querySelectorAll(reTweets).forEach(reTweet => {
+    reTweet.children[1].style.display = 'none'
 })`
   },
   'Twitter demetricator': {
@@ -175,4 +176,14 @@ window.addEventListener('load', () => {
     const name = decodeURIComponent(window.location.hash.substr(1))
     loadScript(name)
   }
+
+  nn.getAll('.hotkey').forEach(ele => { ele.innerHTML = hotkey })
+
+  nn.get('#close-info').on('click', () => {
+    nn.get('#info').css({ display: 'none' })
+  })
+
+  nn.get('#info-btn').on('click', () => {
+    nn.get('#info').css({ display: 'block' })
+  })
 })
